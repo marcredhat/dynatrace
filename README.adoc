@@ -48,7 +48,7 @@ service/dynatrace-oneagent-webhook created
 deployment.apps/dynatrace-oneagent-operator created
 deployment.apps/dynatrace-oneagent-webhook created
 securitycontextconstraints.security.openshift.io/dynatrace-oneagent-privileged created
-
+----
 
 ----
 curl -o cr.yaml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
