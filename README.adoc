@@ -414,6 +414,11 @@ image:images/nexus12.png[title="console"]
 
 image:images/nexus13.png[title="console"]
 
+----
+Here are the artifacts upload to Nexus by our Jenkins Pipeline:
+----
+
+image:images/nexus15.png[title="console"]
 
 
 == Configure Jenkins / Dynatrace integration
