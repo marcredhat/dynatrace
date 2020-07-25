@@ -318,6 +318,14 @@ Nexus: admin/admin123
 ----
 
 
+== Deploy Ansible Tower 3.7.1 on OpenShift 4.4
+
+----
+wget https://raw.githubusercontent.com/marcredhat/tower/master/tower.sh
+chmod +x ./tower.sh
+./tower.sh
+----
+
 ----
 Links:
 
