@@ -148,7 +148,8 @@ https://github.com/marcredhat/upi/blob/master/nfs/nfs.adoc
 == Dynatrace - dedicated OpenShift overview page
 
 ----
-Connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated Kubernetes/OpenShift overview page requires that you run an ActiveGate in your environment (version 1.163+).
+Connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
+requires that you run an ActiveGate in your environment (version 1.163+).
 
 See https://www.dynatrace.com/support/help/technology-support/cloud-platforms/openshift/monitoring/monitor-openshift-clusters-with-dynatrace/
 ----
