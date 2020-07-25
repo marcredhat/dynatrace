@@ -444,6 +444,17 @@ See end-to-end video demo of this Jenkins Pipeline at https://youtu.be/xpqnsmPjD
 == End to end monitoring for proprietary Java frameworks
 
 ----
+Features	of OneAgent SDK for Java (https://github.com/Dynatrace/OneAgent-SDK-for-Java)
+Trace database requests	
+Trace messaging
+Outgoing web requests	
+Incoming web requests	
+Custom request attributes	
+In process linking	
+Trace incoming and outgoing remote calls
+----
+
+----
 Add the following to https://github.com/marcredhat/cargotracker/blob/master/pom.xml
 and
 Restart the Jenkins Nexus pipeline above
