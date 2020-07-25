@@ -1,6 +1,7 @@
 
 == Dynatrace on OpenShift 4.4 workshop
 
+image:images/kube6.png[title="console"]
 
 ----
 For details on how to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes)
@@ -191,6 +192,7 @@ image:images/kube4.png[title="console"]
 
 image:images/kube5.png[title="console"]
 
+image:images/kube6.png[title="console"]
 
 == OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
@@ -311,6 +313,8 @@ imagestream.image.openshift.io/jboss-eap70-openshift created
 
 
 NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
+
+== Tekton Pipeline CI/CD
 
 NOTE: See OpenShift Pipelines examples at https://sysdig.com/blog/securing-tekton-pipelines-openshift/ and a
 short video at  https://bit.ly/marcredhatsysdigcicd
