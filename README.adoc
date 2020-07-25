@@ -1,6 +1,14 @@
 
 == Dynatrace on OpenShift 4.4 workshop
 
+
+----
+For details on how to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes)
+on a baremetal server with KVM/libvirt,
+please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the
+"Install OpenShift 4" paragraph
+----
+
 ----
 Prerequisites
 1) Dynatrace API token 
