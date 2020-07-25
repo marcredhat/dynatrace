@@ -440,6 +440,10 @@ Restart the Jenkins Nexus pipeline above
         </dependency>
 ----
 
+
+image:images/nexus16.png[title="console"]
+
+
 == Configure Jenkins / Dynatrace integration
 
 ----
