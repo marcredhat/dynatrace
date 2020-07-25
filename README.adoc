@@ -1,0 +1,318 @@
+
+== Dynatrace on OpenShift 4.4 workshop
+
+----
+Prerequisites
+1) Dynatrace API token 
+   from Settings > Integration > Dynatrace API
+   
+2) Dynatrace PaaS token PaaS (used to download OneAgent and ActiveGate installers)
+   from Settings >  Integration > Platform as a Service
+   
+3) apiUrl -  URL to the API of your Dynatrace environment. 
+   In Dynatrace SaaS it will look like https://<ENVIRONMENTID>.live.dynatrace.com/api
+   Mine is https://eye15053.live.dynatrace.com/api
+----
+
+
+----
+oc new-project dynatrace
+----
+
+----
+oc -n dynatrace create secret generic oneagent --from-literal="apiToken=<API token>" --from-literal="paasToken=<PaaS token>"
+
+You may update this Secret at any time to rotate the tokens.
+----
+
+----
+Check the latest release at https://github.com/Dynatrace/dynatrace-oneagent-operator/branches/active
+
+oc apply -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/download/v0.8.0/openshift.yaml
+
+customresourcedefinition.apiextensions.k8s.io/oneagentapms.dynatrace.com configured
+customresourcedefinition.apiextensions.k8s.io/oneagents.dynatrace.com configured
+mutatingwebhookconfiguration.admissionregistration.k8s.io/dynatrace-oneagent-webhook created
+serviceaccount/dynatrace-oneagent created
+serviceaccount/dynatrace-oneagent-operator created
+serviceaccount/dynatrace-oneagent-webhook created
+role.rbac.authorization.k8s.io/dynatrace-oneagent-operator created
+role.rbac.authorization.k8s.io/dynatrace-oneagent-webhook created
+clusterrole.rbac.authorization.k8s.io/dynatrace-oneagent-operator created
+clusterrole.rbac.authorization.k8s.io/dynatrace-oneagent-webhook created
+rolebinding.rbac.authorization.k8s.io/dynatrace-oneagent-operator created
+rolebinding.rbac.authorization.k8s.io/dynatrace-oneagent-webhook created
+clusterrolebinding.rbac.authorization.k8s.io/dynatrace-oneagent-operator created
+clusterrolebinding.rbac.authorization.k8s.io/dynatrace-oneagent-webhook created
+service/dynatrace-oneagent-webhook created
+deployment.apps/dynatrace-oneagent-operator created
+deployment.apps/dynatrace-oneagent-webhook created
+securitycontextconstraints.security.openshift.io/dynatrace-oneagent-privileged created
+
+
+----
+curl -o cr.yaml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
+----
+
+
+----
+Update cr.yaml with apiUrl and the name of secret we create above ("oneagent").
+
+
+In my case,
+apiUrl: https://eye15053.live.dynatrace.com/api
+tokens: "oneagent"
+as shown below.
+
+apiVersion: dynatrace.com/v1alpha1
+kind: OneAgent
+metadata:
+  # a descriptive name for this object.
+  # all created child objects will be based on it.
+  name: oneagent
+  namespace: dynatrace
+spec:
+  # dynatrace api url including `/api` path at the end
+  # either set ENVIRONMENTID to the proper tenant id or change the apiUrl as a whole, e.q. for Managed
+  apiUrl: https://eye15053.live.dynatrace.com/api
+  # disable certificate validation checks for installer download and API communication
+  skipCertCheck: false
+  # name of secret holding `apiToken` and `paasToken`
+  # if unset, name of custom resource is used
+  tokens: "oneagent"
+.....
+----
+
+----
+oc apply -f cr.yaml
+oneagent.dynatrace.com/oneagent configured
+----
+
+----
+oc get pods
+NAME                                           READY   STATUS    RESTARTS   AGE
+dynatrace-oneagent-operator-788fd7f5b4-6lt67   1/1     Running   0          4m21s
+dynatrace-oneagent-webhook-84747567df-lmltw    2/2     Running   0          4m21s
+oneagent-4j9xf                                 0/1     Running   0          102s
+oneagent-55p2k                                 0/1     Running   0          106s
+oneagent-b7qlb                                 0/1     Running   0          108s
+oneagent-jhk2f                                 0/1     Running   0          107s
+----
+
+
+----
+oc logs oneagent-jhk2f
+23:19:49 Started agent deployment as a container, PID 1352627.
+23:19:49 Downloading agent to /tmp/Dynatrace-OneAgent-Linux.sh via https://eye15053.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=***&arch=x86&flavor=default
+23:20:18 Download complete
+23:20:18 Downloaded version: 1.195.161.20200720-160625
+23:20:18 Verifying agent installer signature
+23:20:21 Verification successful
+23:20:21 Deploying to: /mnt/host_root
+23:20:21 Starting installer...
+23:20:22 Warning: Parameter APP_LOG_CONTENT_ACCESS is deprecated and will be removed in future release. Please use --set-app-log-content-access instead. For details, see https://www.dynatrace.com/support/help/shortlink/oneagentctl
+23:20:23 Checking root privileges...
+23:20:23 OK
+23:20:23 Installation started, version 1.195.161.20200720-160625, build date: 20.07.2020, PID 1352627.
+23:20:25 Detected platform: LINUX arch: X86
+23:20:25 Detected bitness: 64
+23:20:25 Checking free space in /opt/dynatrace/oneagent
+23:20:27 Extracting...
+23:20:28 Unpacking. This may take a few minutes...
+23:20:52 Unpacking complete.
+23:20:52 Moving new binaries into lib folders...
+23:20:54 User 'dtuser' added successfully.
+23:20:57 Non-privileged mode is enabled.
+23:20:57 Applying agent configuration
+23:20:58 Storing SELinux policy sources in /opt/dynatrace/oneagent/agent.
+23:20:58 Installing SELinux Dynatrace module. This may take a while...
+23:21:35 dynatrace_oneagent module was successfully installed
+----
+
+
+----
+If you are using NFS, please see
+https://github.com/marcredhat/upi/blob/master/nfs/nfs.adoc
+----
+
+
+== OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
+
+----
+git clone https://github.com/RedHatGov/devsecops-workshop
+----
+
+----
+scripts/provision.sh deploy --deploy-che --ephemeral --user marc
+----
+
+
+----
+########################################################################
+OpenShift CI/CD Demo (Fri Jul 24 21:18:26 EDT 2020)
+########################################################################
+Deploying demo...
+Now using project "dev-marc" on server "https://api.ocp4.local:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+
+Now using project "stage-marc" on server "https://api.ocp4.local:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+
+Now using project "cicd-marc" on server "https://api.ocp4.local:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+
+Warning: ServiceAccount 'jenkins' not found
+clusterrole.rbac.authorization.k8s.io/edit added: "system:serviceaccount:cicd-marc:jenkins"
+Warning: ServiceAccount 'jenkins' not found
+clusterrole.rbac.authorization.k8s.io/edit added: "system:serviceaccount:cicd-marc:jenkins"
+--> Deploying template "openshift/jenkins-ephemeral" to project cicd-marc
+
+     Jenkins (Ephemeral)
+     ---------
+     Jenkins service, without persistent storage.
+
+     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+
+     A Jenkins service has been created in your project.  Log into Jenkins with your OpenShift account.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.
+
+     * With parameters:
+        * Jenkins Service Name=jenkins
+        * Jenkins JNLP Service Name=jenkins-jnlp
+        * Enable OAuth in Jenkins=true
+        * Memory Limit=1Gi
+        * Jenkins ImageStream Namespace=openshift
+        * Disable memory intensive administrative monitors=false
+        * Jenkins ImageStreamTag=jenkins:2
+        * Allows use of Jenkins Update Center repository with invalid SSL certificate=false
+
+--> Creating resources ...
+    route.route.openshift.io "jenkins" created
+    deploymentconfig.apps.openshift.io "jenkins" created
+    serviceaccount "jenkins" created
+    rolebinding.authorization.openshift.io "jenkins_edit" created
+    service "jenkins-jnlp" created
+    service "jenkins" created
+--> Success
+    Access your application via route 'jenkins-cicd-marc.apps.ocp4.local'
+    Run 'oc status' to view your app.
+Using template https://raw.githubusercontent.com/epe105/devsecops-workshop/master/cicd-template.yaml
+--> Deploying template "cicd-marc/cicd" for "https://raw.githubusercontent.com/epe105/devsecops-workshop/master/cicd-template.yaml" to project cicd-marc
+
+     cicd
+     ---------
+     Use the following credentials for login:
+     Jenkins: use your OpenShift credentials
+     Nexus: admin/admin123
+     SonarQube: admin/admin
+     Gogs Git Server: gogs/gogs
+
+     * With parameters:
+        * DEV project name=dev-marc
+        * STAGE project name=stage-marc
+        * Deploy Eclipse Che=true
+        * Ephemeral=true
+        * WEBHOOK_SECRET=FMN4vB1s # generated
+
+--> Creating resources ...
+    rolebinding.authorization.openshift.io "default_admin" created
+    buildconfig.build.openshift.io "tasks-pipeline-preloaded" created
+    configmap "jenkins-slaves" created
+    job.batch "cicd-demo-installer" created
+--> Success
+JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
+    Use 'oc start-build tasks-pipeline-preloaded' to start a build.
+    Run 'oc status' to view your app.
+
+Provisioning completed successfully!
+(Completed in 0 min 9 sec)
+
+imagestream.image.openshift.io/jboss-eap70-openshift created
+imagestream.image.openshift.io/jboss-eap70-openshift created
+imagestream.image.openshift.io/jboss-eap70-openshift created
+
+----
+
+
+----
+oc project cicd-marc
+oc delete pods -l job-name=cicd-demo-installer
+wget https://raw.githubusercontent.com/OpenShiftDemos/nexus/master/nexus3-template.yaml
+oc new-app -f nexus3-template.yaml --param=NEXUS_VERSION=3.13.0 --param=MAX_MEMORY=2Gi
+----
+
+----
+If you don't use  Nexus, you can delete as follows:
+oc get all --selector app=nexus -o name
+replicationcontroller/nexus-1
+service/nexus
+deploymentconfig.apps.openshift.io/nexus
+imagestream.image.openshift.io/nexus
+route.route.openshift.io/nexus
+
+oc delete  all --selector app=nexus
+----
+
+----
+oc get sa
+NAME       SECRETS   AGE
+builder    2         20m
+che        2         19m
+default    2         19m
+deployer   2         20m
+jenkins    2         19
+----
+
+
+----
+oc get route
+NAME      HOST/PORT                           PATH   SERVICES   PORT       TERMINATION     WILDCARD
+che       che-cicd-marc.apps.ocp4.local              che-host   <all>                      None
+jenkins   jenkins-cicd-marc.apps.ocp4.local          jenkins    <all>      edge/Redirect   None
+nexus     nexus-cicd-marc.apps.ocp4.local            nexus      8081-tcp                   None
+----
+
+
+----
+https://jenkins-cicd-marc.apps.ocp4.local/
+http://nexus-cicd-marc.apps.ocp4.local/
+Jenkins: use your OpenShift credentials
+Nexus: admin/admin123
+----
+
+
+----
+Links:
+
+
+http://redhatgov.io/workshops/secure_software_factory/
+https://github.com/RedHatGov/devsecops-workshop
+https://eye15053.live.dynatrace.com/
+https://github.com/redhat-cop/agnosticd/blob/development/training/01_Introduction/05_AgnosticD_in_Prod.adoc
+https://github.com/redhat-cop/agnosticd/tree/development/training
+https://github.com/dynatrace-acm/dtacmworkshop
+https://github.com/redhat-cop/agnosticd/blob/development/ansible/software_playbooks/tower.yml
+https://github.com/Dynatrace/dynatrace-oneagent-operator
+https://www.dynatrace.com/support/help/reference/dynatrace-concepts/access-tokens/
+
+----
