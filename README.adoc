@@ -424,6 +424,22 @@ image:images/nexus15.png[title="console"]
 See end-to-end video demo of this Jenkins Pipeline at https://youtu.be/xpqnsmPjDN4
 
 
+== End to end monitoring for proprietary Java frameworks
+
+----
+Add the following to https://github.com/marcredhat/cargotracker/blob/master/pom.xml
+and
+Restart the Jenkins Nexus pipeline above
+
+<!-- Marc added https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk  -->    
+        <dependency>
+                  <groupId>com.dynatrace.oneagent.sdk.java</groupId>
+                  <artifactId>oneagent-sdk</artifactId>
+                  <version>1.7.0</version>
+                  <scope>compile</scope>
+        </dependency>
+----
+
 == Configure Jenkins / Dynatrace integration
 
 ----
