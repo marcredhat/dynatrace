@@ -319,6 +319,12 @@ imagestream.image.openshift.io/jboss-eap70-openshift created
 NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
 
 
+
+== Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
+
+See https://medium.com/appfleet/publishing-artifacts-to-sonatype-nexus-using-jenkins-pipelines-db8c1412dc7
+
+
 == Sonatype Nexus on OpenShift
 
 ----
