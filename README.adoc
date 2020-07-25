@@ -407,8 +407,11 @@ image:images/nexus11.png[title="console"]
 
 My Jenkins Pipeline is at https://github.com/marcredhat/dynatrace/blob/master/jenkins_pipeline_nexus
 
-image:images/nexus12.png[title="console"]
+
 image:images/nexus14.png[title="console"]
+
+image:images/nexus12.png[title="console"]
+
 image:images/nexus13.png[title="console"]
 
 
