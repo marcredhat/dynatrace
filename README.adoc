@@ -144,6 +144,35 @@ https://github.com/marcredhat/upi/blob/master/nfs/nfs.adoc
 ----
 
 
+== Dynatrace - dedicated OpenShift overview page
+
+----
+Connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated Kubernetes/OpenShift overview page requires that you run an ActiveGate in your environment (version 1.163+).
+
+See https://www.dynatrace.com/support/help/technology-support/cloud-platforms/openshift/monitoring/monitor-openshift-clusters-with-dynatrace/
+----
+
+----
+oc project dynatrace
+oc apply -f https://www.dynatrace.com/support/help/codefiles/kubernetes/kubernetes-monitoring-service-account.yaml
+
+serviceaccount/dynatrace-monitoring created
+clusterrole.rbac.authorization.k8s.io/dynatrace-monitoring-cluster created
+clusterrolebinding.rbac.authorization.k8s.io/dynatrace-monitoring-cluster created
+----
+
+
+----
+oc config view --minify -o jsonpath='{.clusters[0].cluster.server}'
+
+https://api.ocp4.local:6443
+----
+
+----
+oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token-secret.value
+----
+
+
 == OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
 ----
