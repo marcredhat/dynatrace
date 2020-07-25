@@ -172,6 +172,25 @@ https://api.ocp4.local:6443
 oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token-secret.value
 ----
 
+----
+Connect your OpenShift cluster to Dynatrace 
+You'll need the bearer token and the Kubernetes API URL mentioned above to set up the connection to the Kubernetes API.
+
+Go to Settings > Cloud and virtualization > Kubernetes.
+Click Connect new cluster.
+Provide a Name, Kubernetes API URL, and the Bearer token for the OpenShift cluster.
+----
+
+image:images/kube1.png[title="console"]
+
+image:images/kube2.png[title="console"]
+
+image:images/kube3.png[title="console"]
+
+image:images/kube4.png[title="console"]
+
+image:images/kube5.png[title="console"]
+
 
 == OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
