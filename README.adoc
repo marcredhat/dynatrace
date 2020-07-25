@@ -318,6 +318,25 @@ Nexus: admin/admin123
 ----
 
 
+== Configure Jenkins / Dynatrace integration
+
+----
+Install Jenkins Dynatrace plugins
+----
+
+image:images/jenkinsdynatraceplugins.png[title="console"]
+
+----
+Navigate to Manage Jenkins -> Configure System -> Performance Signature: Dynatrace SaaS/Managed
+Enter name of the 
+Server (ex. Dynatrace Server)
+Your Tenant URL (https://xxxxxxxx.live.dynatrace.com) – SaaS, (https://asdfa.Dynatrace-managed.com/e/asdfafa) - Managed
+API Token
+Note: You many need to Save and exit this screen and come back for the “Add” dropdown to works, thanks to a bug in Jenkins
+
+
+----
+
 == Deploy Ansible Tower on baremetal
 
 ----
