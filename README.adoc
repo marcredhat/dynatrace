@@ -421,6 +421,9 @@ Here are the artifacts uploaded to Nexus by our Jenkins Pipeline:
 image:images/nexus15.png[title="console"]
 
 
+See end-to-end video demo of this Jenkins Pipeline at https://youtu.be/xpqnsmPjDN4
+
+
 == Configure Jenkins / Dynatrace integration
 
 ----
