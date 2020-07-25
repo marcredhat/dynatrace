@@ -256,8 +256,7 @@ imagestream.image.openshift.io/jboss-eap70-openshift created
 
 NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
 
-NOTE: See OpenShift Pipelines examples at:
-https://sysdig.com/blog/securing-tekton-pipelines-openshift/
+NOTE: See OpenShift Pipelines examples at https://sysdig.com/blog/securing-tekton-pipelines-openshift/ and a
 short video at  https://bit.ly/marcredhatsysdigcicd
 
 
