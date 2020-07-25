@@ -337,6 +337,9 @@ Note: You many need to Save and exit this screen and come back for the “Add”
 
 ----
 
+
+image:images/performancesignature.png[title="console"]
+
 == Deploy Ansible Tower on baremetal
 
 ----
