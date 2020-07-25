@@ -333,12 +333,13 @@ Server (ex. Dynatrace Server)
 Your Tenant URL (https://xxxxxxxx.live.dynatrace.com) – SaaS, (https://asdfa.Dynatrace-managed.com/e/asdfafa) - Managed
 API Token
 Note: You many need to Save and exit this screen and come back for the “Add” dropdown to works, thanks to a bug in Jenkins
-
-
 ----
 
 
-image:images/performancesignature.png[title="console"]
+image:images/performancesignature1.png[title="console"]
+
+
+image:images/performancesignature2.png[title="console"]
 
 == Deploy Ansible Tower on baremetal
 
