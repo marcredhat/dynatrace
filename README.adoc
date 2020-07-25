@@ -254,6 +254,13 @@ imagestream.image.openshift.io/jboss-eap70-openshift created
 ----
 
 
+NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
+
+NOTE: See OpenShift Pipelines examples at:
+https://sysdig.com/blog/securing-tekton-pipelines-openshift/
+short video at  https://bit.ly/marcredhatsysdigcicd
+
+
 ----
 oc project cicd-marc
 oc delete pods -l job-name=cicd-demo-installer
@@ -305,6 +312,8 @@ Nexus: admin/admin123
 Links:
 
 
+Sysdig OPA Image Scanner on OpenShift 4.5.2 - short video at https://bit.ly/marcredhatopa
+Step-by-step instructions at https://github.com/marcredhat/sysdig/blob/master/ImageScanningAdmissionController-OpenPolicyAgent.adoc
 http://redhatgov.io/workshops/secure_software_factory/
 https://github.com/RedHatGov/devsecops-workshop
 https://eye15053.live.dynatrace.com/
