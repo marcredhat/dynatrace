@@ -280,6 +280,17 @@ oc delete  all --selector app=nexus
 ----
 
 ----
+oc get pv
+NAME         CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS   REASON   AGE
+postgresql   10Gi       RWO            Retain           Bound    tower371/postgresql             non-dynamic             36m
+pv00001      10Gi       RWO            Retain           Bound    cicd/jenkins-jobs               non-dynamic             4h47m
+pv00002      10Gi       RWO            Retain           Bound    cicd/jenkins-workspaces         non-dynamic             4h44m
+pv00003      10Gi       RWO            Retain           Bound    cicd-marc/che-data-volume       non-dynamic             3h34m
+pv00004      10Gi       RWO            Retain           Bound    cicd-marc/claim-che-workspace   non-dynamic             3h34m
+pv00020      100Gi      RWO            Retain           Bound    cicd/maven-repo                 non-dynamic             4h55m
+----
+
+----
 oc get sa
 NAME       SECRETS   AGE
 builder    2         20m
