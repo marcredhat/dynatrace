@@ -318,6 +318,17 @@ imagestream.image.openshift.io/jboss-eap70-openshift created
 
 NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
 
+
+== Sonatype Nexus on OpenShift
+
+----
+See https://github.com/OpenShiftDemos/nexus contains OpenShift templates and scripts for 
+deploying Sonatype Nexus 2 an 3 and 
+pre-configuring Red Hat and JBoss maven repositories on Nexus via post deploy hooks. 
+
+You can modify the post hook in the templates and add other Nexus repositories by using  helper functions.
+----
+
 ----
 oc project cicd-marc
 oc delete pods -l job-name=cicd-demo-installer
