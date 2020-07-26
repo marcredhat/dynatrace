@@ -14,7 +14,7 @@
  6. Configure Jenkins / Dynatrace integration - Performance Signature
    (collects performance values during a Jenkins build and evaluates and 
    compares the result with previous builds and non-functional requirements). 
- 7. Tekton Pipelines CI/CD
+ 7. Tekton Pipelines CI/CD with Dynatrace-CLI running in containers using podman
  8. Deploy Ansible Tower on baremetal
  9. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
 10. Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
@@ -523,7 +523,27 @@ image:images/performancesignature2.png[title="console"]
 
 
 
-== Tekton Pipeline CI/CD
+== Tekton Pipeline CI/CD Tekton Pipelines CI/CD with Dynatrace-CLI running in containers using podman
+
+----
+Tekton tasks are generic, 
+take input and output resources, 
+execute steps as container images and 
+can be reused for several pipelines. 
+
+
+As we can run the Dynatrace CLI tasks in containers 
+(using podman, see https://github.com/marcredhat/dynatrace/blob/master/build.sh),
+*** we can key easily integrate Dynatrace into Tekton Pipelines to get ***
+*** performance metrics (Dynatrace "Performance Signature"), automate quality gates  etc ***
+
+
+Parallel tasks can be run in separate containers, which is very efficient.
+----
+
+
+image:images/tekton.png[title="tekton"]
+
 
 NOTE: See OpenShift Pipelines examples at https://sysdig.com/blog/securing-tekton-pipelines-openshift/ and a
 short video at  https://bit.ly/marcredhatsysdigcicd
