@@ -3,18 +3,20 @@
 
 
 ----
-This workshop contains reusable components/automation to:
-1. deploy OpenShift 4.4+ on baremetal
-2. connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
+ This workshop contains reusable components/automation to:
+ 1. deploy OpenShift 4.4+ on baremetal
+ 2. connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
    (using ActiveGate)
-3. OpenShift CI/CD with Jenkins, Sonatype Nexus etc
-4. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
-5. End to end monitoring for proprietary Java frameworks 
+ 3. OpenShift CI/CD with Jenkins, Sonatype Nexus etc
+ 4. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
+ 5. End to end monitoring for proprietary Java frameworks 
    (using https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk)
-6. Configure Jenkins / Dynatrace integration - Performance Signature
-7. Tekton Pipelines CI/CD
-8. Deploy Ansible Tower on baremetal
-9. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
+ 6. Configure Jenkins / Dynatrace integration - Performance Signature
+   (collects performance values during a Jenkins build and evaluates and 
+   compares the result with previous builds and non-functional requirements). 
+ 7. Tekton Pipelines CI/CD
+ 8. Deploy Ansible Tower on baremetal
+ 9. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
 10. Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
     Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4 releases at
     https://github.com/marcredhat/z/blob/master/zdt.adoc
@@ -476,6 +478,18 @@ image:images/nexus16.png[title="console"]
 
 
 == Configure Jenkins / Dynatrace integration
+
+
+----
+The Performance Signature plugin collects performance values during a Jenkins build and evaluates and 
+compares the result with previous builds and non-functional requirements. 
+
+Several software tests can be run and evaluated automatically, so that 
+the most important key performance indicators (KPI) can be summarized and 
+be available for all project participants very quickly.
+----
+
+See https://github.com/jenkinsci/performance-signature-dynatrace-plugin
 
 ----
 Install Jenkins Dynatrace plugins
