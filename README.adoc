@@ -528,9 +528,11 @@ chmod +x ./tower.sh
 ----
 mkdir keptn
 oc new-project keptn
-oc projct keptn
+oc project keptn
 curl -sL https://get.keptn.sh | sudo -E bash
-keptn install --platform=openshift
+----
+
+----
 keptn install --platform=openshift
 keptn creates the folder /root/.keptn/ to store logs and possibly creds.
 Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz
@@ -546,6 +548,13 @@ y
 Start upgrading Helm Chart keptn in namespace: keptn
 ----
 
+----
+oc edit deploy configuration-service
+
+securityContext:
+        fsGroup: 184
+
+----
 
 See https://tutorials.keptn.sh/tutorials/keptn-installation-openshift-07/index.html?index=..%2F..index#5
 
@@ -564,8 +573,8 @@ Keep the above window running and go back to your initial terminal window
 
 ----
 KEPTN_ENDPOINT=http://localhost:8080/api
-[root@dell-r730-001 keptn]# KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-[root@dell-r730-001 keptn]# keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 Starting to authenticate
 Successfully authenticated
 Using a file-based storage for the key because the password-store seems to be not set up.
@@ -595,9 +604,10 @@ Browse to localhost:8080
 DT_TENANT=eye15053.live.dynatrace.com
 DT_API_TOKEN=<Dynatrace API token>
 DT_PAAS_TOKEN=<Dynatrace PaaS token>
-oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath={.spec.rules[0].host})/api" --from-literal="KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)" 
+oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://localhost:8080/api" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" 
+----
 
-
+----
 keptn configure monitoring dynatrace
 ----
 
