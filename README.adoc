@@ -211,6 +211,10 @@ Provide a Name, Kubernetes API URL, and the Bearer token for the OpenShift clust
 
 image:images/kube1.png[title="console"]
 
+----
+Click on "Install a new Environment ActiveGate" 
+----
+
 image:images/kube2.png[title="console"]
 
 image:images/kube3.png[title="console"]
