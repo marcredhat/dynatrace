@@ -3,7 +3,7 @@ export CONTAINER_FS=$(buildah mount)
 buildah run $ubicontainer microdnf update -y && \
 buildah run $ubicontainer microdnf  install git python3-pip -y && \
 buildah run $ubicontainer git clone https://github.com/Dynatrace/dynatrace-cli.git && \
-buildah run $ubicontainercd dynatrace-cli
+buildah run $ubicontainer cd dynatrace-cli
 buildah run $ubicontainer  pip3 install requests
 buildah config --cmd /bin/bash ${ubicontainer} && \
 buildah run $ubicontainer -- sh -c "python3 dtcli.py --help"
