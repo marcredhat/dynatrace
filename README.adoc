@@ -193,12 +193,16 @@ https://api.ocp4.local:6443
 ----
 
 ----
+Get the Bearer token for the OpenShift cluster using the following command:
+----
+
+----
 oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token-secret.value
 ----
 
 ----
 Connect your OpenShift cluster to Dynatrace 
-You'll need the bearer token and the Kubernetes API URL mentioned above to set up the connection to the Kubernetes API.
+You'll need the Bearer token and the Kubernetes API URL mentioned above to set up the connection to the Kubernetes API.
 
 Go to Settings > Cloud and virtualization > Kubernetes.
 Click Connect new cluster.
