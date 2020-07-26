@@ -1,5 +1,5 @@
 
-== Dynatrace on OpenShift 4.4 workshop
+== Dynatrace on OpenShift 4.4+ workshop
 
 
 ----
