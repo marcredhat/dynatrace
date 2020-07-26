@@ -532,6 +532,11 @@ oc project keptn
 curl -sL https://get.keptn.sh | sudo -E bash
 ----
 
+
+----
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:default
+----
+
 ----
 keptn install --platform=openshift
 keptn creates the folder /root/.keptn/ to store logs and possibly creds.
@@ -607,6 +612,8 @@ DT_PAAS_TOKEN=<Dynatrace PaaS token>
 oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://localhost:8080/api" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" 
 ----
 
+
+
 ----
 oc apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
 ----
@@ -635,6 +642,72 @@ shipyard-service-5c98f89f4c-znscx               2/2     Running   2          19m
 keptn configure monitoring dynatrace
 ----
 
+
+image:images/nexus20.png[title="console"]
+
+
+
+----
+cat ./shipyard.yaml
+stages:
+  - name: "dev"
+    deployment_strategy: "direct"
+    test_strategy: "functional"
+  - name: "staging"
+    approval_strategy:
+      pass: "automatic"
+      warning: "manual"
+    deployment_strategy: "blue_green_service"
+    test_strategy: "performance"
+  - name: "production"
+    approval_strategy:
+      pass: "manual"
+      warning: "manual"
+    deployment_strategy: "blue_green_service"
+    remediation_strategy: "automated
+----
+
+
+----
+keptn create project marc2 --shipyard=./shipyard.yaml
+----
+
+
+----
+oc logs dynatrace-service-6f7848749-wfgw4 --follow
+
+{"timestamp":"2020-07-26T02:41:07.020914691Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
+{"timestamp":"2020-07-26T02:41:07.021217513Z","logLevel":"INFO","message":"Creating Dashboard for project marc2"}
+{"timestamp":"2020-07-26T02:41:07.296897299Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.29707368Z","logLevel":"INFO","message":"Dynatrace dashboard created successfully. You can view it here: https://eye15053.live.dynatrace.com/#dashboards"}
+{"timestamp":"2020-07-26T02:41:07.385872921Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
+{"timestamp":"2020-07-26T02:41:07.493885101Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.604932139Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.719819202Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.814504617Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+----
+
+
+See https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
+
+----
+git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
+
+cd examples/onboarding-carts
+----
+
+----
+Create a github token from https://github.com/settings/tokens/new
+
+keptn create project sockshop --shipyard=./shipyard.yaml --git-user=marcredhat --git-token=<github token> --git-remote-url=https://github.com/marcredhat
+
+keptn onboard service carts --project=sockshop --chart=./carts
+----
+
+
+image:images/nexus21.png[title="console"]
+
+
 ----
 Links:
 
@@ -650,5 +723,4 @@ https://github.com/dynatrace-acm/dtacmworkshop
 https://github.com/redhat-cop/agnosticd/blob/development/ansible/software_playbooks/tower.yml
 https://github.com/Dynatrace/dynatrace-oneagent-operator
 https://www.dynatrace.com/support/help/reference/dynatrace-concepts/access-tokens/
-
 ----
