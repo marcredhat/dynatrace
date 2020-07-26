@@ -534,7 +534,7 @@ can be reused for several pipelines.
 
 As we can run the Dynatrace CLI tasks in containers 
 (using podman, see https://github.com/marcredhat/dynatrace/blob/master/build.sh),
-*** we can key easily integrate Dynatrace into Tekton Pipelines to get ***
+*** we can easily integrate Dynatrace into Tekton Pipelines to get ***
 *** performance metrics (Dynatrace "Performance Signature"), automate quality gates  etc ***
 
 
