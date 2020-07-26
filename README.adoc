@@ -522,6 +522,30 @@ chmod +x ./tower.sh
 ./tower.sh
 ----
 
+
+
+== Keptn - event-based control plane for continuous delivery and automated operations for cloud-native applications
+----
+mkdir keptn
+oc new-project keptn
+oc projct keptn
+curl -sL https://get.keptn.sh | sudo -E bash
+keptn install --platform=openshift
+keptn install --platform=openshift
+keptn creates the folder /root/.keptn/ to store logs and possibly creds.
+Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz
+Installing Keptn ...
+Please enter the following information or press enter to keep the old value:
+Openshift Server URL []: https://api.ocp4.local:6443
+....
+Using a file-based storage for the key because the password-store seems to be not set up.
+Existing Keptn installation found in namespace keptn
+
+Do you want to overwrite this installation? (y/n)
+y
+Start upgrading Helm Chart keptn in namespace: keptn
+----
+
 ----
 Links:
 
