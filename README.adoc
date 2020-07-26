@@ -546,6 +546,31 @@ y
 Start upgrading Helm Chart keptn in namespace: keptn
 ----
 
+
+See https://tutorials.keptn.sh/tutorials/keptn-installation-openshift-07/index.html?index=..%2F..index#5
+
+
+----
+In a new terminal window
+kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+----
+
+----
+Keep the above window running and go back to your initial terminal window 
+----
+
+----
+KEPTN_ENDPOINT=http://localhost:8080/api
+[root@dell-r730-001 keptn]# KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+[root@dell-r730-001 keptn]# keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+Starting to authenticate
+Successfully authenticated
+Using a file-based storage for the key because the password-store seems to be not set up.
+----
+
 ----
 Links:
 
