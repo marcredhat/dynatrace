@@ -601,6 +601,25 @@ oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT
 keptn configure monitoring dynatrace
 ----
 
+----
+oc project
+Using project "keptn" on server "https://api.ocp4.local:6443".
+[root@dell-r730-001 keptn]# oc get pods
+NAME                                            READY   STATUS    RESTARTS   AGE
+api-gateway-nginx-5b865b66b8-nj28p              1/1     Running   0          71m
+api-service-6d86cb4f88-hdn7k                    1/1     Running   0          71m
+bridge-6594f6b8c-cvfcl                          1/1     Running   0          71m
+dynatrace-service-55dc8cf558-ffttf              0/1     Error     2          38s
+dynatrace-service-distributor-f59bd95fb-nt9cx   1/1     Running   0          11m
+eventbroker-go-5674d9646d-hlp42                 1/1     Running   0          71m
+helm-service-85f8bf5fd6-59x4g                   2/2     Running   2          71m
+keptn-nats-cluster-0                            3/3     Running   0          71m
+lighthouse-service-6d4b5dcd9-g6d9v              2/2     Running   2          71m
+mongodb-datastore-647b5bc584-pn4mr              2/2     Running   2          71m
+remediation-service-cf4b7b97f-ndwbd             2/2     Running   2          71m
+shipyard-service-5c98f89f4c-g7b26               2/2     Running   3          71m
+----
+
 
 ----
 Links:
