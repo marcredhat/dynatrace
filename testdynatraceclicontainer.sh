@@ -1,4 +1,10 @@
 #!/bin/bash
+clear
+printf "The Dynatrace CLI container was built using https://github.com/marcredhat/dynatrace/blob/master/build.sh"
+
+sleep 4
+clear
+
 printf "\n***podman container ls***\n"
 podman container ls
 dynatraceclicontainer=`podman container ls  | grep dynatracecli |  awk '{print $1'}`
