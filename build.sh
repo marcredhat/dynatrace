@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 #check JSON models e.g. #https://www.dynatrace.com/support/help/dynatrace-api/configuration-api/service-api/custom-services-api/get-all/?response-parameters%3C-%3Ejson-model=json-model#parameters
 #to see what info is available from Dynatrace
