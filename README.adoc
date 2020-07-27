@@ -535,6 +535,8 @@ image:images/performancesignature2.png[title="console"]
 
 == Tekton Pipeline CI/CD Tekton Pipelines CI/CD with Dynatrace-CLI running in containers using podman
 
+Video showing Dynatrace-CLI with podman: https://youtu.be/_fnv78Q9sDU
+
 ----
 Tekton tasks are generic, 
 take input and output resources, 
