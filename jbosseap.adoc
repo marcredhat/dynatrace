@@ -2,8 +2,38 @@
 == Deploying JBoss EAP applications with the Dynatrace OneAgent SDK for Java on OpenShift 4.4+
 
 ----
+Dynatrace OneAgent SDK
+The primary purpose of this SDK is to facilitate end-to-end tracing of transactions. 
+While other tracing frameworks are rather generic, the Dynatrace OneAgent SDK has more semantics to 
+explicitly model remote calls, database requests, web requests, message passing, in-process context passing and more.
+----
+
+----
+In order to use the Dynatrace OneAgent SDK you need to have access to the source code of the application in question. 
+In languages like Java and Node.js you might have other possibilities to use the SDK even 
+if you do not want or cannot modify the original code (aspects and monkey patching).
+----
+
+----
+OneAgent automatically detects that your application is instrumented with the OneAgent SDK and 
+immediately begins monitoring it. 
+----
+
+----
+Language specific SDKs
+The language specific SDKs are open source and published directly to GitHub, together with technical documentation and sample code:
+OneAgent SDK for Node.js
+OneAgent SDK for Java
+OneAgent SDK for C/C++
+OneAgent SDK for Python
+OneAgent SDK for .NET
+----
+
+
+----
 See 
 http://www.mastertheboss.com/soa-cloud/openshift/deploying-jboss-eap-applications-on-openshift
+https://github.com/Dynatrace/OneAgent-SDK#oneagentsdk
 https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/getting_started_with_jboss_eap_for_openshift_container_platform/index
 ----
 
@@ -104,4 +134,13 @@ eap-app   eap-app-jbosseap-with-dynatraceonegentsdk.apps.ocp4.local          eap
 ----
 
 
+----
+oc logs eap-app-1-7x2fl | grep oneagent
+04:14:52,919 DEBUG [org.jboss.as.config] (MSC service thread 1-1) VM Arguments: -D[Standalone] 
+.....
+-agentpath:/opt/dynatrace/oneagent/agent/bin/1.195.161.20200720-160625/linux-x86-64/liboneagentloader.so=loglevelcon=none,tenant=
+----
+
 image:images/eap1.png[title="JBoss EAP app with Dynatrace OneAgent SDK in OpenShift 4.4+"]
+
+
