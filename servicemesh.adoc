@@ -1,0 +1,27 @@
+
+== Service Mesh and Dynatrace
+
+
+----
+oc new-project marc-service mesh
+----
+
+Deploy Jaeger, Kiali and ServiceMesh Operators
+
+----
+oc project marc-service mesh
+oc get pods
+NAME                                      READY   STATUS    RESTARTS   AGE
+grafana-79bc798b4d-h6kl4                  2/2     Running   0          3m3s
+istio-citadel-77dfd4c5c6-xvwgg            1/1     Running   0          4m57s
+istio-egressgateway-6c57bbcf8-r6zcv       1/1     Running   0          3m38s
+istio-galley-8665b7c6b-7k7ww              1/1     Running   0          4m19s
+istio-ingressgateway-647c7dbdb6-z8khm     1/1     Running   0          3m38s
+istio-pilot-cfdb84-pg5nn                  2/2     Running   0          3m39s
+istio-policy-84894fd7f8-7kgfx             2/2     Running   0          4m3s
+istio-sidecar-injector-76f997574c-4d5cr   1/1     Running   0          3m19s
+istio-telemetry-668fcd4bc9-wl7qq          2/2     Running   0          4m3s
+jaeger-848476c496-z2mkv                   2/2     Running   0          4m19s
+kiali-86bd6986-f58rk                      1/1     Running   0          2m8s
+prometheus-556597f46f-ncrc4               2/2     Running   0          4m43s
+----
