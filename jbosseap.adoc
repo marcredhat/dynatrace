@@ -21,7 +21,7 @@ immediately begins monitoring it.
 
 ----
 Language specific SDKs
-The language specific SDKs are open source and published directly to GitHub, together with technical documentation and sample code:
+The language specific SDKs are open source and published directly to GitHub:
 OneAgent SDK for Node.js
 OneAgent SDK for Java
 OneAgent SDK for C/C++
