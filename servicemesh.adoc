@@ -89,13 +89,6 @@ oc create -f virtual-service-reviews-jason-v2-v3.yaml
 virtualservice.networking.istio.io/reviews created
 ----
 
-----
-oc create -f destination-rule-all-mtls.yaml
-destinationrule.networking.istio.io/productpage created
-destinationrule.networking.istio.io/reviews created
-destinationrule.networking.istio.io/ratings created
-destinationrule.networking.istio.io/details created
-----
 
 
 ----
