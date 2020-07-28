@@ -78,7 +78,7 @@ oc new-app --template=eap73-basic-s2i \
 -p CONTEXT_DIR=kitchensink
 ----
 
-oc get pods
 
-
-oc logs eap-app-build-artifacts-1-build --follow
+----
+oc logs -f bc/eap-app-build-artifacts --follow
+----
