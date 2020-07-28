@@ -5,15 +5,21 @@
 
 The workshop will cover the following topics:
 
-- Facilitate end-to-end tracing of transactions using Dynatrace OneAgent SDK 
-  (explicitly model remote calls, database requests, web requests, message passing, in-process context passing and more).
+- Facilitate end-to-end tracing of transactions using Dynatrace OneAgent SDK.
+
+  The Dynatrace OneAgent SDK explicitly model remote calls, database requests, web requests, 
+  message passing, in-process context passing and more.
+  
   In the labs, we use the OneAgent SDK for Java.
   Deploying agents for Node.js, C/C++, Python and .NET is very similar.
 
+
 - Automate manual steps to speed up your Jenkins and Tekton CI/CD pipeline and 
   identify quality issues earlier in the software lifecycle. 
-  Dynatrace automates manual quality validation processes using AI-assisted SLI/SLO-based quality gates. 
-  Events, tags and APIs enable seamless integration with CI/CD workflows delivering automated deployments for faster time-to-value
+  
+  Dynatrace automates manual quality validation processe using quality gates.
+  Events, tags and APIs enable seamless integration with CI/CD workflows delivering automated deployments for faster time-to-value.
+
 
 == Test
 
