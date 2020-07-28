@@ -8,7 +8,7 @@ https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_applicati
 ----
 
 ----
-oc new-project marcjbosseap_withdynatraceonegentsdk
+oc new-project marc-jbosseap-with-dynatraceonegentsdk
 ----
 
 ----
