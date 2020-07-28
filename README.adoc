@@ -30,7 +30,9 @@ The workshop will cover the following topics:
 
 ### Prerequisites
 
-* OpenShift 4.x (we included automation to deploy OpenShift 4 on baremetal at See xref:1. Deploy OpenShift 4.4+ on baremetal[] but all labs should work fine 
+* OpenShift 4.x (we included automation to deploy OpenShift 4 on baremetal at 
+xref:1. Deploy OpenShift 4.4+ on baremetal[] 
+but all labs should work fine 
 regardless of how and where you deploy OpenShift).
 
 ### Duration
