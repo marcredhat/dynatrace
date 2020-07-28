@@ -4,8 +4,6 @@
 == Dynatrace on OpenShift 4.4+ workshop
 
 
-include::intro.adoc[]
-
 ----
  This workshop contains reusable components/automation to:
  1. Deploy OpenShift 4.4+ on baremetal
