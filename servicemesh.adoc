@@ -11,6 +11,8 @@ oc new-project marc-service mesh
 
 Deploy Jaeger, Kiali and ServiceMesh Operators
 
+image:images/operators.png[title="Installed Operators"]
+
 ----
 oc project marc-service mesh
 oc get pods
@@ -101,6 +103,10 @@ GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
 ----
 oc -n marc-service-mesh get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}'
 ----
+
+
+image:images/servicemesh1.png[title="Bookinfo Service Mesh app"]
+
 
 ----
 cat ./generate-traffic.sh
