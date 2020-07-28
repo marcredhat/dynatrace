@@ -22,6 +22,7 @@ The workshop will cover the following topics:
   Events, tags and APIs enable seamless integration with CI/CD workflows delivering automated deployments for faster time-to-value.
 
 
+- Dynatrace and OpenShift Service Mesh
 
 
 ### Audience
@@ -75,6 +76,8 @@ Each module should be able to be completed in between 30-45 minutes plus 15 mins
  11. Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
     Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4 releases at
     https://github.com/marcredhat/z/blob/master/zdt.adoc
+    
+ 12. Dynatrace and OpenShift Service Mesh (https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc)   
 ----
 
 
@@ -844,6 +847,9 @@ See https://www.dynatrace.com/technologies/mainframe-monitoring/
 
 Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4 releases at
 https://github.com/marcredhat/z/blob/master/zdt.adoc
+
+
+== 12. Dynatrace and OpenShift Service Mesh (https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc)
 
 ----
 Links:
