@@ -9,25 +9,28 @@
  2. connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
    (using ActiveGate)
    
- 3. OpenShift CI/CD with Jenkins, Sonatype Nexus etc
+ 3. Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to 
+    facilitate end-to-end tracing of transactions. 
+       
+ 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc
  
- 4. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
+ 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
  
- 5. End to end monitoring for proprietary Java frameworks 
+ 6. End to end monitoring for proprietary Java frameworks 
  
    (using https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk)
    
- 6. Automate Quality Gates - Jenkins / Dynatrace integration - Performance Signature
+ 7. Automate Quality Gates - Jenkins / Dynatrace integration - Performance Signature
    (collects performance values during a Jenkins build and evaluates and 
    compares the result with previous builds and non-functional requirements). 
    
- 7. Automate Quality Gates - Tekton Pipelines with Dynatrace-CLI running in containers using podman
+ 8. Automate Quality Gates - Tekton Pipelines with Dynatrace-CLI running in containers using podman
  
- 8. Deploy Ansible Tower on baremetal
+ 9. Deploy Ansible Tower on baremetal
  
- 9. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
+ 10. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
  
-10. Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
+ 11. Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
     Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4 releases at
     https://github.com/marcredhat/z/blob/master/zdt.adoc
 ----
@@ -236,6 +239,14 @@ image:images/kube5.png[title="console"]
 image:images/kube6.png[title="console"]
 
 image:images/kube7.png[title="console"]
+
+
+
+
+== Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to facilitate end-to-end tracing of transactions
+
+See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
+
 
 
 == OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
