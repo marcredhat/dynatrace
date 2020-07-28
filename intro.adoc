@@ -1,0 +1,94 @@
+# Day in the Streaming Life
+
+## Event-Driven Workshop
+
+This workshop is a series of hands-on modules which are designed to familiarize participants with event-driven concepts and give them a taste of using the new Red Hat Integration stack for building event-driven architectures.
+
+The workshop will cover the following topics:
+
+- Facilitate end-to-end tracing of transactions using Dynatrace OneAgent SDK 
+  (explicitly model remote calls, database requests, web requests, message passing, in-process context passing and more).
+  In the labs, we use the OneAgent SDK for Java.
+  Deploying agents for Node.js, C/C++, Python and .NET is very similar.
+
+- Automate manual steps to speed up your Jenkins and Tekton CI/CD pipeline and 
+  identify quality issues earlier in the software lifecycle. 
+  Dynatrace automates manual quality validation processes using AI-assisted SLI/SLO-based quality gates. 
+  Events, tags and APIs enable seamless integration with CI/CD workflows delivering automated deployments for faster time-to-value
+
+
+### Audience
+
+#### DevOps, Operations, Developers, Architects
+
+### Prerequisites
+
+* OpenShift 4.x
+
+### Duration
+
+Each module should be able to be completed in between 60-90 minutes plus 20 mins of slides introducing the content.
+
+### Installation
+
+Follow the [Installation Procedure](docs/install.md#installation) to setup a working environment.
+
+## Workshop Modules
+
+This workshop is broken into 1 time-boxed modules:
+
+Module 1: <br/>
+Module 2: <br/>
+Module 3: <br/>
+Module 4: <br/>
+
+This workshop could also be split up. All modules could be delivered on their own as standalone workshops, but we **strongly** recommend to deliver them in the suggested order.
+
+### Background Story
+
+
+### Module One
+
+Taste of event driven and why.
+(Move http call to async msg calls)
+
+Since the acquisition, the International Inc.’s Development team has been pressured to make the transition smooth quickly. They have decided to start with a small project “Shopify” where it notifies both internal departments and external partners when an order has been placed, through pure REST implementation to event driven architecture.
+
+* Create a new Topic on AMQ Online
+* Migrate the REST integration to a messaging broker
+* Difference between API calls and event driven
+* Fault tolerance
+
+### Module Two
+
+Sharing real time data/event from earth to the moon
+(Legacy to Cloud Data sharing between cluster in a hybrid environment)
+
+To expand Sales channels,  “Fleur de lune” no longer limit their market to the existing youngster customer base. “International Inc” has helped them expand their sales channel by taking orders from Major retailers, shopping malls and even local pharmacies. Orders are coming in from earth, they need to be also synced up to the ones received by the moon’s local e-commerce.
+
+* Install Kafka (on Legacy)
+* Deploy Kafka Connect with Debezium (on Legacy)
+* Config Debezium (on Legacy)
+* Config Kafka Connect (with everything pre-installed in the cloud)
+
+### Module Three
+
+Edge to Data Lake - Orchestrating and composing events
+
+Utilizing the existing inter-planet transportation already established from “International Inc”, most of the operation cost for  “Fleur de lune” was the shipping cost between earth and moon.  Now, thanks to “International Inc”, they can minimize the cost of shipment by using their service. To provide better customer experience. Closely monitoring the harvest and harvest batch shipping schedule, make Fleur De Lune more proactive. And faster respond to any emergency that may impact their business.
+
+* Connect IoT data (simulator) to AMQ Online  (Task 1)
+* Bridge AMQ online events from IoT to Kafka using Camel-K and write to DB (for module four). Couple of EIP is introduced in this section. Splitter, WireTap. (Task 2)
+* Introducing online caching for shipping. Connect to Data Grid to access shipping data.  (Task 3)
+
+### Module Four
+
+A meteor shower has just hit a couple of the devices on some marshmallow farms, resulting in the incorrect cost estimation. This needs to be corrected so we can request asking the right amount from the cargo ship!
+
+* Disaster STRIKES!! Data recovery and replaying events (IoT Breakdown)
+* Start Up simulator (Needs to check if we can write back to the same offset)
+* Replay CEP
+
+### TODO
+
+Service Mesh and Dynatrace
