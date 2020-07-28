@@ -1,7 +1,7 @@
 
 == Service Mesh and Dynatrace
 
-
+https://www.dynatrace.com/news/blog/automatic-intelligent-observability-into-envoy-proxied-services-of-your-istio-service-mesh-preview/
 https://istio.io/latest/docs/examples/bookinfo/
 
 
