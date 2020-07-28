@@ -34,12 +34,12 @@ Follow the [Installation Procedure](docs/install.md#installation) to setup a wor
 
 ## Workshop Modules
 
-This workshop is broken into 1 time-boxed modules:
+This workshop is broken into 4 time-boxed modules:
 
-Module 1: aaaaa<br/>
-Module 2: aaaaa<br/>
-Module 3: aaaaa<br/>
-Module 4: aaaaa<br/>
+Module 1: Introduction to Event Driven Architecture<br/>
+Module 2: Change Data Capture & Apache Kafka<br/>
+Module 3: Cloud-Native Enterprise Integration Patterns using Camel K<br/>
+Module 4: Event Sourcing and Complex Event Processing<br/>
 
 This workshop could also be split up. All modules could be delivered on their own as standalone workshops, but we **strongly** recommend to deliver them in the suggested order.
 
