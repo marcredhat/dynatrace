@@ -173,6 +173,12 @@ spec:
 .....
 ----
 
+
+----
+If you want Dynatrace to monitor OpenShift Service Mesh deployments, set
+enableIstio: true
+----
+
 ----
 oc apply -f cr.yaml
 oneagent.dynatrace.com/oneagent configured
