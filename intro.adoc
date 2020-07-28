@@ -36,10 +36,10 @@ Follow the [Installation Procedure](docs/install.md#installation) to setup a wor
 
 This workshop is broken into 1 time-boxed modules:
 
-Module 1: <br/>
-Module 2: <br/>
-Module 3: <br/>
-Module 4: <br/>
+Module 1: aaaaa<br/>
+Module 2: aaaaa<br/>
+Module 3: aaaaa<br/>
+Module 4: aaaaa<br/>
 
 This workshop could also be split up. All modules could be delivered on their own as standalone workshops, but we **strongly** recommend to deliver them in the suggested order.
 
