@@ -15,6 +15,7 @@ The workshop will cover the following topics:
   Dynatrace automates manual quality validation processes using AI-assisted SLI/SLO-based quality gates. 
   Events, tags and APIs enable seamless integration with CI/CD workflows delivering automated deployments for faster time-to-value
 
+== Test
 
 ### Audience
 
@@ -91,3 +92,6 @@ A meteor shower has just hit a couple of the devices on some marshmallow farms, 
 ### TODO
 
 Service Mesh and Dynatrace
+
+
+See xref:Test[].
