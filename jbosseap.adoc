@@ -82,3 +82,26 @@ oc new-app --template=eap73-basic-s2i \
 ----
 oc logs -f bc/eap-app-build-artifacts --follow
 ----
+
+----
+oc get pods
+NAME                              READY   STATUS      RESTARTS   AGE
+eap-app-1-7x2fl                   0/1     Running     0          63s
+eap-app-1-deploy                  1/1     Running     0          67s
+eap-app-2-build                   0/1     Completed   0          3m48s
+eap-app-build-artifacts-1-build   0/1     Completed   0          7m43s
+----
+
+----
+oc expose svc eap-app
+----
+
+
+----
+oc get route
+NAME      HOST/PORT                                                   PATH   SERVICES   PORT    TERMINATION     WILDCARD
+eap-app   eap-app-jbosseap-with-dynatraceonegentsdk.apps.ocp4.local          eap-app    <all>   edge/Redirect   None
+----
+
+
+image:images/eap1.png[title="JBoss EAP app with Dynatrace OneAgent SDK in OpenShift 4.4+"]
