@@ -849,7 +849,9 @@ Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4
 https://github.com/marcredhat/z/blob/master/zdt.adoc
 
 
-== 12. Dynatrace and OpenShift Service Mesh (https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc)
+== 12. Dynatrace and OpenShift Service Mesh 
+
+See https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc
 
 ----
 Links:
