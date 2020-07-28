@@ -31,7 +31,7 @@ The workshop will cover the following topics:
 ### Prerequisites
 
 * OpenShift 4.x (we included automation to deploy OpenShift 4 on baremetal at 
-xref:1. Deploy OpenShift 4.4+ on baremetal[] 
+xref: Test[] 
 but all labs should work fine 
 regardless of how and where you deploy OpenShift).
 
@@ -80,6 +80,7 @@ Each module should be able to be completed in between 60-90 minutes plus 20 mins
 
 image:images/kube6.png[title="console"]
 
+== Test
 
 == 1. Deploy OpenShift 4.4+ on baremetal
 
