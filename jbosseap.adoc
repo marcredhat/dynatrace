@@ -1,0 +1,84 @@
+
+== Deploying JBoss EAP applications with the Dynatrace OneAgent SDK for Java on OpenShift 4.4+
+
+----
+See 
+http://www.mastertheboss.com/soa-cloud/openshift/deploying-jboss-eap-applications-on-openshift
+https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/getting_started_with_jboss_eap_for_openshift_container_platform/index
+----
+
+----
+oc new-project marcjbosseap_withdynatraceonegentsdk
+----
+
+----
+Create a secret with a Service Account Token at https://access.redhat.com/terms-based-registry/
+----
+
+----
+Example: the user I created at https://access.redhat.com/terms-based-registry/ is 11009103|marcz2
+oc create secret docker-registry marcsecret \
+    --docker-server=registry.redhat.io \
+    --docker-username="11009103|marcz2" \
+    --docker-password="<PASSWORD>" \
+    --docker-email=<EMAIL>
+
+oc secrets link default marcsecret --for=pull
+
+oc secrets link builder marcsecret
+----
+
+----
+oc import-image jboss-eap-7/eap73-openjdk11-openshift-rhel8 --from=registry.redhat.io/jboss-eap-7/eap73-openjdk11-openshift-rhel8 --confirm
+
+oc replace --force   -f https://raw.githubusercontent.com/jboss-container-images/jboss-eap-openshift-templates/eap73/templates/eap73-basic-s2i.json
+
+oc replace --force   -f https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/7.3.x/templates/eap73-openjdk11-image-stream.json
+----
+
+----
+for resource in \
+eap73-openjdk11-amq-persistent-s2i.json \
+eap73-openjdk11-amq-s2i.json \
+eap73-openjdk11-basic-s2i.json \
+eap73-openjdk11-https-s2i.json \
+eap73-openjdk11-image-stream.json \
+eap73-openjdk11-sso-s2i.json \
+eap73-openjdk11-starter-s2i.json \
+eap73-openjdk11-third-party-db-s2i.json \
+eap73-openjdk11-tx-recovery-s2i.json
+do
+oc replace --force -f \
+https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/7.3.x/templates/${resource}
+done
+----
+
+----
+Add the following to the kitchesink/pom.xml at SOURCE_REPOSITORY_URL:
+<!-- Marc added https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk  -->
+       <dependency>
+                 <groupId>com.dynatrace.oneagent.sdk.java</groupId>
+                 <artifactId>oneagent-sdk</artifactId>
+                 <version>1.7.0</version>
+                 <scope>compile</scope>
+       </dependency>
+----
+
+----
+See my kitchesink/pom.xml at https://github.com/marcredhat/jboss-eap-quickstarts/blob/7.3.x/kitchensink/pom.xml
+----
+
+----
+Check IMAGE_STREAM_NAMESPACE below
+
+oc new-app --template=eap73-basic-s2i \
+-p IMAGE_STREAM_NAMESPACE=marcjbosseap_withdynatraceonegentsdk \
+-p SOURCE_REPOSITORY_URL=https://github.com/marcredhat/jboss-eap-quickstarts \
+-p SOURCE_REPOSITORY_REF=7.3.x-openshift \
+-p CONTEXT_DIR=kitchensink
+----
+
+oc get pods
+
+
+oc logs eap-app-build-artifacts-1-build --follow
