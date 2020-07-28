@@ -8,7 +8,7 @@ https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_applicati
 ----
 
 ----
-oc new-project marc-jbosseap-with-dynatraceonegentsdk
+oc new-project jbosseap-with-dynatraceonegentsdk
 ----
 
 ----
@@ -72,7 +72,7 @@ See my kitchesink/pom.xml at https://github.com/marcredhat/jboss-eap-quickstarts
 Check IMAGE_STREAM_NAMESPACE below
 
 oc new-app --template=eap73-basic-s2i \
--p IMAGE_STREAM_NAMESPACE=marc-jbosseap-with-dynatraceonegentsdk \
+-p IMAGE_STREAM_NAMESPACE=jbosseap-with-dynatraceonegentsdk \
 -p SOURCE_REPOSITORY_URL=https://github.com/marcredhat/jboss-eap-quickstarts \
 -p SOURCE_REPOSITORY_REF=7.3.x-openshift \
 -p CONTEXT_DIR=kitchensink
