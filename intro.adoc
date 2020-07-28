@@ -1,8 +1,7 @@
-# Day in the Streaming Life
+# Using Dynatrace to speed up your CI/CD pipelines and identify quality issues early 
 
-## Event-Driven Workshop
+##  Dynatrace on OpenShift 4 Workshop
 
-This workshop is a series of hands-on modules which are designed to familiarize participants with event-driven concepts and give them a taste of using the new Red Hat Integration stack for building event-driven architectures.
 
 The workshop will cover the following topics:
 
