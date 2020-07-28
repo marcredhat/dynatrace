@@ -38,6 +38,9 @@
 
 image:images/kube6.png[title="console"]
 
+
+== Deploy OpenShift 4.4+ on baremetal
+
 ----
 For details on how to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes)
 on a baremetal server with KVM/libvirt,
