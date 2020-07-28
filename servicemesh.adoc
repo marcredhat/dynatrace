@@ -63,3 +63,59 @@ reviews-v1-7f6558b974-x6dtb       1/1     Running   0          22s
 reviews-v2-6cb6ccd848-86j5j       1/1     Running   0          22s
 reviews-v3-cc56b578-b4c96         1/1     Running   0          22s
 ----
+
+----
+[root@dell-r730-001 kube]# cd ../..
+[root@dell-r730-001 bookinfo]# cd networking
+oc create -f bookinfo-gateway.yaml
+oc create -f bookinfo-gateway.yaml
+gateway.networking.istio.io/bookinfo-gateway created
+virtualservice.networking.istio.io/bookinfo created
+----
+
+
+----
+[root@dell-r730-001 networking]# export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
+[root@dell-r730-001 networking]# echo "GATEWAY_URL=$GATEWAY_URL"
+GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
+----
+
+
+----
+oc create -f virtual-service-reviews-jason-v2-v3.yaml
+virtualservice.networking.istio.io/reviews created
+----
+
+----
+oc create -f destination-rule-all-mtls.yaml
+destinationrule.networking.istio.io/productpage created
+destinationrule.networking.istio.io/reviews created
+destinationrule.networking.istio.io/ratings created
+destinationrule.networking.istio.io/details created
+----
+
+
+----
+Generate traffic
+export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
+[root@dell-r730-001 networking]# echo "GATEWAY_URL=$GATEWAY_URL"
+GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
+----
+
+----
+cat ./generate-traffic.sh
+#!/bin/bash
+
+while [ true ]
+do
+    curl -o /dev/null -s -w "%{http_code}\n" http://$GATEWAY_URL/productpage
+    sleep .1
+done
+----
+
+----
+./generate-traffic.sh
+200
+200
+200
+----
