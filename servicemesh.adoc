@@ -2,6 +2,9 @@
 == Service Mesh and Dynatrace
 
 
+https://istio.io/latest/docs/examples/bookinfo/
+
+
 ----
 oc new-project marc-service mesh
 ----
@@ -100,6 +103,10 @@ Generate traffic
 export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
 [root@dell-r730-001 networking]# echo "GATEWAY_URL=$GATEWAY_URL"
 GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
+----
+
+----
+oc -n marc-service-mesh get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}'
 ----
 
 ----
