@@ -25,3 +25,30 @@ jaeger-848476c496-z2mkv                   2/2     Running   0          4m19s
 kiali-86bd6986-f58rk                      1/1     Running   0          2m8s
 prometheus-556597f46f-ncrc4               2/2     Running   0          4m43s
 ----
+
+----
+Click on "Create instance" under "Istio Service Mesh Member Roll"
+Replace namespace with the name of the service mesh control plane project you created
+Under members, add the names of the projects where you'll deploy service mesh apps managed by the above control plane.
+(With OpenShift Service Mesh, you can have multiple control planes each managing multiple namespaces).
+----
+
+----
+apiVersion: maistra.io/v1
+kind: ServiceMeshMemberRoll
+metadata:
+  name: default
+  namespace: marc-service-mesh
+spec:
+  members:
+    - marc-bookinfo
+----
+
+
+----
+oc new-project marc-bookinfo
+git clone https://github.com/marcredhat/istio-demo.git -b new_branch
+cd istio-demo/bookinfo/
+oc project marc-bookinfo
+oc create -f 0-bookinfo.yaml
+----
