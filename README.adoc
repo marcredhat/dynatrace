@@ -4,9 +4,9 @@
 
 ----
  This workshop contains reusable components/automation to:
- 1. deploy OpenShift 4.4+ on baremetal
+ 1. Deploy OpenShift 4.4+ on baremetal
  
- 2. connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
+ 2. Connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
    (using ActiveGate)
    
  3. Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to 
@@ -39,7 +39,7 @@
 image:images/kube6.png[title="console"]
 
 
-== Deploy OpenShift 4.4+ on baremetal
+== 1. Deploy OpenShift 4.4+ on baremetal
 
 ----
 For details on how to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes)
@@ -183,8 +183,8 @@ https://github.com/marcredhat/upi/blob/master/nfs/nfs.adoc
 ----
 
 
-== Dynatrace - dedicated OpenShift overview page
-
+== 2. Connect your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
+  
 ----
 Connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
 requires that you run an ActiveGate in your environment (version 1.163+).
@@ -245,14 +245,14 @@ image:images/kube7.png[title="console"]
 
 
 
+== 3. Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to facilitate end-to-end tracing of transactions. 
 
-== Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to facilitate end-to-end tracing of transactions
 
 See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 
 
 
-== OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
+== 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
 ----
 git clone https://github.com/RedHatGov/devsecops-workshop
@@ -374,7 +374,7 @@ NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on
 
 
 
-== Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
+== 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
 
 See https://medium.com/appfleet/publishing-artifacts-to-sonatype-nexus-using-jenkins-pipelines-db8c1412dc7
 
@@ -478,7 +478,7 @@ image:images/nexus15.png[title="console"]
 See end-to-end video demo of this Jenkins Pipeline at https://youtu.be/xpqnsmPjDN4
 
 
-== End to end monitoring for proprietary Java frameworks
+== 6. End to end monitoring for proprietary Java frameworks
 
 ----
 Features	of OneAgent SDK for Java (https://github.com/Dynatrace/OneAgent-SDK-for-Java)
@@ -509,7 +509,7 @@ Restart the Jenkins Nexus pipeline above
 image:images/nexus16.png[title="console"]
 
 
-== Configure Jenkins / Dynatrace integration
+== 7. Automate Quality Gates - Jenkins / Dynatrace integration - Performance Signature
 
 
 ----
@@ -547,7 +547,7 @@ image:images/performancesignature2.png[title="console"]
 
 
 
-== Tekton Pipeline CI/CD Tekton Pipelines CI/CD with Dynatrace-CLI running in containers using podman
+== 8. Automate Quality Gates - Tekton Pipelines with Dynatrace-CLI running in containers using podman
 
 Video showing Dynatrace-CLI with podman: https://youtu.be/_fnv78Q9sDU
 
@@ -580,14 +580,14 @@ short video at  https://bit.ly/marcredhatsysdigcicd
 
 
 
-== Deploy Ansible Tower on baremetal
+== 9. Deploy Ansible Tower on baremetal
 
 ----
 https://raw.githubusercontent.com/marcredhat/tower/master/towerbaremetal.sh
 ----
 
 
-== Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
+== 10. Optional: Deploy Ansible Tower 3.7.1 on OpenShift 4.4
 
 ----
 wget https://raw.githubusercontent.com/marcredhat/tower/master/tower.sh
@@ -788,7 +788,9 @@ keptn onboard service carts --project=sockshop --chart=./carts
 image:images/nexus21.png[title="console"]
 
 
-== Ansible/Z and mainframe monitoring (https://www.dynatrace.com/technologies/mainframe-monitoring/)
+== 11. Ansible/Z and mainframe monitoring 
+
+See https://www.dynatrace.com/technologies/mainframe-monitoring/
 
 
 Automation to deploy ZD&T emulated mainframe, Ansible/Z and multiple OpenShift 4 releases at
