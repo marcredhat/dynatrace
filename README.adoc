@@ -283,8 +283,8 @@ Provide a Name, Kubernetes API URL, and the Bearer token for the OpenShift clust
 image:images/kube1.png[title="console"]
 
 ----
-If your OpenShift cluster does not already have a Dynatrace Active Gate, 
-you'llbe required to install one.
+If your OpenShift cluster does not already have a Dynatrace ActiveGate, 
+you'll be required to install one.
 Click on "Install a new Environment ActiveGate" 
 ----
 
