@@ -312,7 +312,7 @@ See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 == 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
 ----
-git clone https://github.com/RedHatGov/devsecops-workshop
+git clone https://github.com/marcredhat/devsecops-workshop
 cd devsecops-workshop/
 ----
 
