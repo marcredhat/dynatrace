@@ -36,6 +36,8 @@ xref:Install[]
 but all labs should work fine 
 regardless of how and where you deploy OpenShift).
 
+Also tested on RHPDS (RedHat Product and Demo System) « OpenShift 4.4 Workshop ».
+
 ### Duration
 
 Each module should be able to be completed in between 30-45 minutes plus 15 mins of slides introducing the content.
