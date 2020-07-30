@@ -313,10 +313,12 @@ See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 
 ----
 git clone https://github.com/RedHatGov/devsecops-workshop
+cd devsecops-workshop/
 ----
 
 ----
-scripts/provision.sh deploy --deploy-che --ephemeral --user marc
+ ./scripts/provision.sh deploy --deploy-che --ephemeral --user opentlc-mgr
+#scripts/provision.sh deploy --deploy-che --ephemeral --user marc
 ----
 
 
