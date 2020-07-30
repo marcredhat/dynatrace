@@ -317,8 +317,8 @@ cd devsecops-workshop/
 ----
 
 ----
- ./scripts/provision.sh deploy --deploy-che --ephemeral --user opentlc-mgr
-#scripts/provision.sh deploy --deploy-che --ephemeral --user marc
+./scripts/provision.sh deploy  --ephemeral --user <user>
+#./scripts/provision.sh deploy  --ephemeral --user marc
 ----
 
 
