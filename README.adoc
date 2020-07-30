@@ -267,7 +267,8 @@ Get the Bearer token for the OpenShift cluster using the following command:
 ----
 Copy the secret returned by the following command:
 
-oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token
+oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o jsonpath='{.data.token}' -n dynatrace | base64 --decode
+#oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token
 ----
 
 ----
@@ -282,6 +283,8 @@ Provide a Name, Kubernetes API URL, and the Bearer token for the OpenShift clust
 image:images/kube1.png[title="console"]
 
 ----
+If your OpenShift cluster does not already have a Dynatrace Active Gate, 
+you'llbe required to install one.
 Click on "Install a new Environment ActiveGate" 
 ----
 
