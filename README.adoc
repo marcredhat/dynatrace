@@ -449,6 +449,8 @@ You can modify the post hook in the templates and add other Nexus repositories b
 ----
 
 ----
+oc project cicd-<user>
+In my case, 
 oc project cicd-marc
 oc delete pods -l job-name=cicd-demo-installer
 wget https://raw.githubusercontent.com/OpenShiftDemos/nexus/master/nexus3-template.yaml
@@ -468,17 +470,6 @@ oc delete  all --selector app=nexus
 ----
 
 ----
-oc get pv
-NAME         CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS   REASON   AGE
-postgresql   10Gi       RWO            Retain           Bound    tower371/postgresql             non-dynamic             36m
-pv00001      10Gi       RWO            Retain           Bound    cicd/jenkins-jobs               non-dynamic             4h47m
-pv00002      10Gi       RWO            Retain           Bound    cicd/jenkins-workspaces         non-dynamic             4h44m
-pv00003      10Gi       RWO            Retain           Bound    cicd-marc/che-data-volume       non-dynamic             3h34m
-pv00004      10Gi       RWO            Retain           Bound    cicd-marc/claim-che-workspace   non-dynamic             3h34m
-pv00020      100Gi      RWO            Retain           Bound    cicd/maven-repo                 non-dynamic             4h55m
-----
-
-----
 oc get sa
 NAME       SECRETS   AGE
 builder    2         20m
@@ -492,7 +483,6 @@ jenkins    2         19
 ----
 oc get route
 NAME      HOST/PORT                           PATH   SERVICES   PORT       TERMINATION     WILDCARD
-che       che-cicd-marc.apps.ocp4.local              che-host   <all>                      None
 jenkins   jenkins-cicd-marc.apps.ocp4.local          jenkins    <all>      edge/Redirect   None
 nexus     nexus-cicd-marc.apps.ocp4.local            nexus      8081-tcp                   None
 ----
