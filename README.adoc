@@ -265,7 +265,9 @@ Get the Bearer token for the OpenShift cluster using the following command:
 ----
 
 ----
-oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token-secret.value
+Copy the secret returned by the following command:
+
+oc get secret $(oc get sa dynatrace-monitoring -o jsonpath='{.secrets[1].name}' -n dynatrace) -o yaml | grep token
 ----
 
 ----
