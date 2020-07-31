@@ -462,7 +462,10 @@ Here are the artifacts uploaded to Nexus by our Jenkins Pipeline:
 image:images/nexus15.png[title="console"]
 
 
-See end-to-end video demo of this Jenkins Pipeline at https://youtu.be/xpqnsmPjDN4
+Video showing the pipeline 
+building the .war file with Dynatrace OneAgent SDK
+and uploading it to Nexus at
+https://www.youtube.com/watch?v=muoz7uoj0S8
 
 
 == 6. End to end monitoring for proprietary Java frameworks
@@ -495,11 +498,6 @@ Restart the Jenkins Nexus pipeline above
 
 image:images/nexus16.png[title="console"]
 
-
-Video showing the pipeline 
-building the .war file with Dynatrace OneAgent SDK
-and uploading it to Nexus at
-https://www.youtube.com/watch?v=muoz7uoj0S8
 
 
 == 7. Automate Quality Gates - Jenkins / Dynatrace integration - Performance Signature
