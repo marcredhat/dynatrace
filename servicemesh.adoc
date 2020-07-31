@@ -14,6 +14,11 @@ Deploy Jaeger, Kiali and ServiceMesh Operators
 image:images/operators.png[title="Installed Operators"]
 
 
+----
+Create Istio Service Mesh Control Plane in your namespace
+----
+
+image:images/mesh1.png[title=""]
 
 ----
 Click on "Create instance" under "Istio Service Mesh Member Roll"
