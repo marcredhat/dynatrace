@@ -380,10 +380,13 @@ image:images/sonarqube.png[title="sonarqube"]
 
 == 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
 
+
+----
 In this lab, you will 
 deploy Sonatype Nexus and 
 run a Jenkins Pipeline to build a Java .war file that includes the OneAgent SDK and 
 save this .war file to Sonatype Nexus
+----
 
 
 See https://medium.com/appfleet/publishing-artifacts-to-sonatype-nexus-using-jenkins-pipelines-db8c1412dc7
