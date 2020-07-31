@@ -55,6 +55,13 @@ ab -n 1000 -c 20  http://localhost:8080/
 ----
 
 
+----
+In Dynatrace, select Technologies/Java 
+
+Select the "marc_spring_boot_poc" group
+----
+
+
 image:images/springboot1.png[title="SpringBoot custom metrics"]
 image:images/springboot2.png[title="SpringBoot custom metrics"]
 image:images/springboot3.png[title="SpringBoot custom metrics"]
