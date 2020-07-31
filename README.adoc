@@ -352,6 +352,13 @@ sonarqube-1-deploy          0/1     Completed     0          5m13s
 ----
 
 
+NOTE: (ignore if you are not using RHPDS)
+If you see OOMKilled pods, it is probably necessary to edit the default RHPDS limit range 
+(this will be in effect for new projects, not existing projects):
+oc edit template project-request -n openshift-config
+To redeploy in a new project, just set another "user" value and re-run ./scripts/provision.sh deploy  --ephemeral --user <newuservalue>
+Here is the config I used successfully:  https://github.com/marcredhat/dynatrace/blob/master/rhpds_project_request_template.yaml
+
 ----
 oc expose svc/sonarqube
 route.route.openshift.io/sonarqube exposed
