@@ -107,9 +107,16 @@ oc new-app --template=eap73-basic-s2i \
 -p CONTEXT_DIR=kitchensink
 ----
 
+----
+oc get bc
+NAME                      TYPE     FROM                  LATEST
+eap-app                   Docker   Dockerfile            2
+eap-app-build-artifacts   Source   Git@7.3.x-openshift   1
+----
 
 ----
 oc logs -f bc/eap-app-build-artifacts --follow
+oc logs -f bc/eap-app --follow
 ----
 
 ----
