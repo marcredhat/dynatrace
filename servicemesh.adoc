@@ -112,7 +112,7 @@ image:images/servicemesh1.png[title="Bookinfo Service Mesh app"]
 
 ----
 cat ./generate-traffic.sh
----
+----
 
 ----
 cat ./generate-traffic.sh
