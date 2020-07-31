@@ -107,6 +107,10 @@ oc new-app --template=eap73-basic-s2i \
 -p CONTEXT_DIR=kitchensink
 ----
 
+
+NOTE: The build process can take up to 20 minutes, use the commands below to check the progress.
+
+
 ----
 oc get bc
 NAME                      TYPE     FROM                  LATEST
