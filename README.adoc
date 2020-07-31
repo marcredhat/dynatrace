@@ -429,6 +429,11 @@ Jenkins: use your OpenShift credentials
 Nexus: admin/admin123
 ----
 
+We can now configure Jenkins and Nexus.
+
+Screenshots are provided below; a video showing step-by-step Jenkins and Nexus configuration can be found at 
+https://www.youtube.com/watch?v=R9VTzEQYt7U&list=PLg1pvyPzFye38HA6eB3bzftH3t-YBZVOI&index=11&t=0s
+
 
 image:images/nexus1.png[title="console"]
 image:images/nexus2.png[title="console"]
