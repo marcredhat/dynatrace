@@ -21,6 +21,19 @@ Create Istio Service Mesh Control Plane in your namespace
 image:images/mesh1.png[title=""]
 
 ----
+Click on "Create instance"
+----
+
+
+image:images/mesh2.png[title=""]
+
+
+----
+Keep all defaults and click "Create"
+----
+
+
+----
 Click on "Create instance" under "Istio Service Mesh Member Roll"
 Replace namespace with the name of the service mesh control plane project you created
 Under members, add the names of the projects where you'll deploy service mesh apps managed by the above control plane.
