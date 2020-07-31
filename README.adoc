@@ -321,9 +321,9 @@ See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 
 
 
-== 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
+== 4. OpenShift CI/CD with Jenkins and Sonarqube 
 
-In this lab, you will deploy Jenkins and Sonatype Nexus.
+In this lab, you will deploy Jenkins and Sonarqube.
 These will be used in the following labs to deploy CI/CD pipelines with Dynatrace.
 
 ----
@@ -370,6 +370,12 @@ NAME        HOST/PORT                                                           
 jenkins     jenkins-cicd-marc.apps.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com            jenkins     <all>      edge/Redirect   None
 sonarqube   sonarqube-cicd-marc.apps.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com          sonarqube   9000-tcp                   None
 ----
+
+image:images/jenkins.png[title="jenkins"]
+
+Connect to Sonarqube as admin/admin
+
+image:images/sonarqube.png[title="sonarqube"]
 
 
 == 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
