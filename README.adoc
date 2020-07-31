@@ -87,7 +87,7 @@ image:images/kube6.png[title="console"]
 
 == Install 
 
-== 1. Deploy OpenShift 4.4+ on baremetal
+== 1. Deploy the Dynatrace OneAgent Operator on OpenShift 4.4+ 
 
 ----
 For details on how to fully automate the installation of OpenShift 4.4 and 4.5 (for lab/test purposes)
@@ -95,6 +95,11 @@ on a baremetal server with KVM/libvirt,
 please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the
 "Install OpenShift 4" paragraph
 ----
+
+
+If you are using RHPDS (the RedHat Product and Demo System), 
+please see https://www.youtube.com/watch?v=yC-OUR7Z9HA 
+
 
 ----
 Prerequisites
