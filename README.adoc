@@ -82,6 +82,8 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
     https://github.com/marcredhat/z/blob/master/zdt.adoc
     
  12. Dynatrace and OpenShift Service Mesh (https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc)   
+ 
+ 14. Publish Spring Boot Actuator custom metrics on Dynatrace
 ----
 
 
@@ -791,6 +793,15 @@ https://github.com/marcredhat/z/blob/master/zdt.adoc
 == 12. Dynatrace and OpenShift Service Mesh 
 
 See https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc
+
+Video: https://www.youtube.com/watch?v=VkbGxXOXRj8
+
+
+== 14. Publish Spring Boot Actuator custom metrics on Dynatrace
+
+See https://github.com/marcredhat/dynatrace/blob/master/springboot.adoc
+
+Video: https://www.youtube.com/watch?v=Wm7h6bqsqH0
 
 ----
 Links:
