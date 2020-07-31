@@ -343,13 +343,11 @@ oc delete pods -l job-name=cicd-demo-installer
 
 ----
 oc get pods
-NAME                        READY   STATUS        RESTARTS   AGE
-cicd-demo-installer-4zftt   1/1     Terminating   0          46s
-cicd-demo-installer-5fqrh   1/1     Running       0          15s
-jenkins-2-deploy            1/1     Running       0          5m15s
-jenkins-2-fzbqk             0/1     Running       0          5m11s
-sonarqube-1-4rksv           1/1     Running       3          5m11s
-sonarqube-1-deploy          0/1     Completed     0          5m13s
+NAME                 READY   STATUS      RESTARTS   AGE
+jenkins-2-4xs59      1/1     Running     0          27m
+jenkins-2-deploy     0/1     Completed   0          27m
+sonarqube-1-74tdp    1/1     Running     0          27m
+sonarqube-1-deploy   0/1     Completed   0          27m
 ----
 
 
