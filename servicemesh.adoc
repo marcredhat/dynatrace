@@ -58,7 +58,8 @@ image:images/mesh3.png[title=""]
 
 ----
 oc new-project marc-bookinfo
-git clone https://github.com/istio/istio
+git clone https://github.com/marcredhat/istio
+#git clone https://github.com/istio/istio
 cd istio/samples/bookinfo/platform/kube
 oc project marc-bookinfo
 oc create -f bookinfo.yaml
