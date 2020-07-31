@@ -57,7 +57,7 @@ Each module should be able to be completed in between 30-45 minutes plus 15 mins
  3. Deploying JBoss EAP applications with the Dynatrace OneAgent SDK to 
     facilitate end-to-end tracing of transactions. 
        
- 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc
+ 4. OpenShift CI/CD with Jenkins and Sonarqube
  
  5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
  
@@ -324,6 +324,7 @@ See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 == 4. OpenShift CI/CD with Jenkins and Sonarqube 
 
 In this lab, you will deploy Jenkins and Sonarqube.
+
 These will be used in the following labs to deploy CI/CD pipelines with Dynatrace.
 
 ----
@@ -378,6 +379,10 @@ image:images/sonarqube.png[title="sonarqube"]
 
 
 == 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
+
+In this lab, you will deploy Jenkins and Sonarqube.
+
+These will be used in the following labs to deploy CI/CD pipelines with Dynatrace.
 
 See https://medium.com/appfleet/publishing-artifacts-to-sonatype-nexus-using-jenkins-pipelines-db8c1412dc7
 
