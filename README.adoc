@@ -115,15 +115,18 @@ oc new-project dynatrace
 ----
 
 ----
-oc -n dynatrace create secret generic oneagent --from-literal="apiToken=<API token>" --from-literal="paasToken=<PaaS token>"
+oc -n dynatrace create secret generic oneagent \
+--from-literal="apiToken=<API token>" --from-literal="paasToken=<PaaS token>"
 
 You may update this Secret at any time to rotate the tokens.
 ----
 
 ----
-Check the latest release at https://github.com/Dynatrace/dynatrace-oneagent-operator/branches/active
+Check the latest release at 
+https://github.com/Dynatrace/dynatrace-oneagent-operator/branches/active
 
-oc apply -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/download/v0.8.0/openshift.yaml
+oc apply -f \
+https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/download/v0.8.0/openshift.yaml
 
 customresourcedefinition.apiextensions.k8s.io/oneagentapms.dynatrace.com configured
 customresourcedefinition.apiextensions.k8s.io/oneagents.dynatrace.com configured
