@@ -43,6 +43,8 @@ Also tested on RHPDS (RedHat Product and Demo System) « OpenShift 4.4 Workshop 
 Each module should be able to be completed in between 30-45 minutes plus 15 mins of slides introducing the content.
 
 
+Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?list=PLg1pvyPzFye38HA6eB3bzftH3t-YBZVOI
+
 
 == Dynatrace on OpenShift 4.4+ workshop
 
