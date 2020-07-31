@@ -6,7 +6,7 @@ https://istio.io/latest/docs/examples/bookinfo/
 
 
 ----
-oc new-project marc-service mesh
+oc new-project marc-service-mesh
 ----
 
 Deploy Jaeger, Kiali and ServiceMesh Operators
@@ -14,7 +14,7 @@ Deploy Jaeger, Kiali and ServiceMesh Operators
 image:images/operators.png[title="Installed Operators"]
 
 ----
-oc project marc-service mesh
+oc project marc-service-mesh
 oc get pods
 NAME                                      READY   STATUS    RESTARTS   AGE
 grafana-79bc798b4d-h6kl4                  2/2     Running   0          3m3s
