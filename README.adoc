@@ -323,6 +323,9 @@ See https://github.com/marcredhat/dynatrace/blob/master/jbosseap.adoc
 
 == 4. OpenShift CI/CD with Jenkins, Sonatype Nexus etc.
 
+In this lab, you will deploy Jenkins and Sonatype Nexus.
+These will be used in the following labs to deploy CI/CD pipelines with Dynatrace.
+
 ----
 git clone https://github.com/marcredhat/devsecops-workshop
 cd devsecops-workshop/
@@ -333,116 +336,33 @@ cd devsecops-workshop/
 #./scripts/provision.sh deploy  --ephemeral --user marc
 ----
 
+----
+oc delete pods -l job-name=cicd-demo-installer
+----
 
 ----
-########################################################################
-OpenShift CI/CD Demo (Fri Jul 24 21:18:26 EDT 2020)
-########################################################################
-Deploying demo...
-Now using project "dev-marc" on server "https://api.ocp4.local:6443".
-
-You can add applications to this project with the 'new-app' command. For example, try:
-
-    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
-
-to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
-
-    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
-
-Now using project "stage-marc" on server "https://api.ocp4.local:6443".
-
-You can add applications to this project with the 'new-app' command. For example, try:
-
-    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
-
-to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
-
-    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
-
-Now using project "cicd-marc" on server "https://api.ocp4.local:6443".
-
-You can add applications to this project with the 'new-app' command. For example, try:
-
-    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
-
-to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
-
-    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
-
-Warning: ServiceAccount 'jenkins' not found
-clusterrole.rbac.authorization.k8s.io/edit added: "system:serviceaccount:cicd-marc:jenkins"
-Warning: ServiceAccount 'jenkins' not found
-clusterrole.rbac.authorization.k8s.io/edit added: "system:serviceaccount:cicd-marc:jenkins"
---> Deploying template "openshift/jenkins-ephemeral" to project cicd-marc
-
-     Jenkins (Ephemeral)
-     ---------
-     Jenkins service, without persistent storage.
-
-     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
-
-     A Jenkins service has been created in your project.  Log into Jenkins with your OpenShift account.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.
-
-     * With parameters:
-        * Jenkins Service Name=jenkins
-        * Jenkins JNLP Service Name=jenkins-jnlp
-        * Enable OAuth in Jenkins=true
-        * Memory Limit=1Gi
-        * Jenkins ImageStream Namespace=openshift
-        * Disable memory intensive administrative monitors=false
-        * Jenkins ImageStreamTag=jenkins:2
-        * Allows use of Jenkins Update Center repository with invalid SSL certificate=false
-
---> Creating resources ...
-    route.route.openshift.io "jenkins" created
-    deploymentconfig.apps.openshift.io "jenkins" created
-    serviceaccount "jenkins" created
-    rolebinding.authorization.openshift.io "jenkins_edit" created
-    service "jenkins-jnlp" created
-    service "jenkins" created
---> Success
-    Access your application via route 'jenkins-cicd-marc.apps.ocp4.local'
-    Run 'oc status' to view your app.
-Using template https://raw.githubusercontent.com/epe105/devsecops-workshop/master/cicd-template.yaml
---> Deploying template "cicd-marc/cicd" for "https://raw.githubusercontent.com/epe105/devsecops-workshop/master/cicd-template.yaml" to project cicd-marc
-
-     cicd
-     ---------
-     Use the following credentials for login:
-     Jenkins: use your OpenShift credentials
-     Nexus: admin/admin123
-     SonarQube: admin/admin
-     Gogs Git Server: gogs/gogs
-
-     * With parameters:
-        * DEV project name=dev-marc
-        * STAGE project name=stage-marc
-        * Deploy Eclipse Che=true
-        * Ephemeral=true
-        * WEBHOOK_SECRET=FMN4vB1s # generated
-
---> Creating resources ...
-    rolebinding.authorization.openshift.io "default_admin" created
-    buildconfig.build.openshift.io "tasks-pipeline-preloaded" created
-    configmap "jenkins-slaves" created
-    job.batch "cicd-demo-installer" created
---> Success
-JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
-    Use 'oc start-build tasks-pipeline-preloaded' to start a build.
-    Run 'oc status' to view your app.
-
-Provisioning completed successfully!
-(Completed in 0 min 9 sec)
-
-imagestream.image.openshift.io/jboss-eap70-openshift created
-imagestream.image.openshift.io/jboss-eap70-openshift created
-imagestream.image.openshift.io/jboss-eap70-openshift created
-
+oc get pods
+NAME                        READY   STATUS        RESTARTS   AGE
+cicd-demo-installer-4zftt   1/1     Terminating   0          46s
+cicd-demo-installer-5fqrh   1/1     Running       0          15s
+jenkins-2-deploy            1/1     Running       0          5m15s
+jenkins-2-fzbqk             0/1     Running       0          5m11s
+sonarqube-1-4rksv           1/1     Running       3          5m11s
+sonarqube-1-deploy          0/1     Completed     0          5m13s
 ----
 
 
-NOTE: JenkinsPipeline build strategy is deprecated. Use Jenkinsfiles directly on Jenkins or OpenShift Pipelines instead
+----
+oc expose svc/sonarqube
+route.route.openshift.io/sonarqube exposed
+----
 
+----
+oc get route
+NAME        HOST/PORT                                                                          PATH   SERVICES    PORT       TERMINATION     WILDCARD
+jenkins     jenkins-cicd-marc.apps.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com            jenkins     <all>      edge/Redirect   None
+sonarqube   sonarqube-cicd-marc.apps.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com          sonarqube   9000-tcp                   None
+----
 
 
 == 5. Publishing artifacts to Sonatype Nexus using Jenkins Pipelines
@@ -464,7 +384,7 @@ You can modify the post hook in the templates and add other Nexus repositories b
 oc project cicd-<user>
 In my case, 
 oc project cicd-marc
-oc delete pods -l job-name=cicd-demo-installer
+
 wget https://raw.githubusercontent.com/OpenShiftDemos/nexus/master/nexus3-template.yaml
 oc new-app -f nexus3-template.yaml --param=NEXUS_VERSION=3.13.0 --param=MAX_MEMORY=2Gi
 ----
