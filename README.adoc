@@ -337,6 +337,7 @@ cd devsecops-workshop/
 ----
 
 ----
+oc delete job cicd-demo-installer
 oc delete pods -l job-name=cicd-demo-installer
 ----
 
@@ -400,28 +401,6 @@ oc project cicd-marc
 
 wget https://raw.githubusercontent.com/OpenShiftDemos/nexus/master/nexus3-template.yaml
 oc new-app -f nexus3-template.yaml --param=NEXUS_VERSION=3.13.0 --param=MAX_MEMORY=2Gi
-----
-
-----
-If you don't use  Nexus, you can delete as follows:
-oc get all --selector app=nexus -o name
-replicationcontroller/nexus-1
-service/nexus
-deploymentconfig.apps.openshift.io/nexus
-imagestream.image.openshift.io/nexus
-route.route.openshift.io/nexus
-
-oc delete  all --selector app=nexus
-----
-
-----
-oc get sa
-NAME       SECRETS   AGE
-builder    2         20m
-che        2         19m
-default    2         19m
-deployer   2         20m
-jenkins    2         19
 ----
 
 
