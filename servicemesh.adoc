@@ -52,6 +52,10 @@ spec:
 ----
 
 
+
+image:images/mesh3.png[title=""]
+
+
 ----
 oc new-project marc-bookinfo
 git clone https://github.com/istio/istio
