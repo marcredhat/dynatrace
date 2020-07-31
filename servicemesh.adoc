@@ -76,14 +76,12 @@ reviews-v3-cc56b578-b4c96         1/1     Running   0          22s
 ----
 
 ----
-[root@dell-r730-001 kube]# cd ../..
-[root@dell-r730-001 bookinfo]# cd networking
+cd ../../networking
 oc create -f bookinfo-gateway.yaml
-oc create -f bookinfo-gateway.yaml
+
 gateway.networking.istio.io/bookinfo-gateway created
 virtualservice.networking.istio.io/bookinfo created
 ----
-
 
 
 ----
@@ -96,8 +94,13 @@ virtualservice.networking.istio.io/reviews created
 ----
 Generate traffic
 export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
-[root@dell-r730-001 networking]# echo "GATEWAY_URL=$GATEWAY_URL"
+echo "GATEWAY_URL=$GATEWAY_URL"
+
 GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
+----
+
+----
+Browse to http://$GATEWAY_URL/productpage
 ----
 
 ----
