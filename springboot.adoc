@@ -1,6 +1,9 @@
 
 
-Publish Spring Boot Actuatorcustom metrics on Dynatrace
+== Publish Spring Boot Actuator custom metrics on Dynatrace
+
+See https://dzone.com/articles/publish-spring-boot-actuator-metrics-on-dynatrace
+
 
 ----
 git clone https://github.com/marcredhat/spring-boot-metrics-dynatrace-example.git
@@ -10,6 +13,13 @@ cd spring-boot-metrics-dynatrace-example/src/main/resources
 ----
 vim application.properties
 ----
+
+----
+cat application.properties | grep marc
+management.metrics.export.dynatrace.device-id=marc
+management.metrics.export.dynatrace.group=marc_spring_boot_poc
+----
+
 
 ----
 cd ../../..
