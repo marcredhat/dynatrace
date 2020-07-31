@@ -85,12 +85,6 @@ virtualservice.networking.istio.io/bookinfo created
 ----
 
 
-----
-[root@dell-r730-001 networking]# export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
-[root@dell-r730-001 networking]# echo "GATEWAY_URL=$GATEWAY_URL"
-GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp4.local
-----
-
 
 ----
 oc create -f virtual-service-reviews-jason-v2-v3.yaml
