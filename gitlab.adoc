@@ -18,3 +18,15 @@ oc get secret default-token-prgjf -o jsonpath="{['data']['ca\.crt']}" | base64 -
 ----
 oc whoami -t
 ----
+
+
+----
+git config --global user.name "<user>t"
+git config --global user.email "<email>"
+
+git clone https://gitlab.com/checkelmann/dynatrace-pipeline.git
+cd dynatrace-pipeline
+
+git remote add marcorigin https://gitlab.com/marcredhat/dynatrace-pipeline.git
+git push -u marcorigin master
+----
