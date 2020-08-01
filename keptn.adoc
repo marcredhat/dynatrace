@@ -239,6 +239,9 @@ Received a message for topic [sh.keptn.internal.event.service.create]: {"content
 Received a message for topic [sh.keptn.event.configuration.change]: {"contenttype":"application/json","data":{"canary":{"action":"set","value":100},"eventContext":{"keptnContext":"a1756959-bf11-40da-9898-63b53b82760a","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjczNjAwODZ9.K3Ta6bV9lgWZExuTLwt53g-znG-bBUgWEy-D6_dsWzs"},"labels":null,"project":"sockshop111","service":"carts-db","stage":"","valuesCanary":{"image":"docker.io/mongo:4.2.2"}},"id":"d8057145-95a6-4191-8849-7e989d7bf050","shkeptncontext":"a1756959-bf11-40da-9898-63b53b82760a","source":"https://github.com/keptn/keptn/cli#configuration-change","specversion":"0.2","time":"2020-08-01T04:28:06.916753285Z","type":"sh.keptn.event.configuration.change"}
 ----
 
+----
+https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
+----
 
 ----
 git clone --branch release-0.6.2 https://github.com/keptn/examples.git --single-branch
