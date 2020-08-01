@@ -30,3 +30,8 @@ cd dynatrace-pipeline
 git remote add marcorigin https://gitlab.com/marcredhat/dynatrace-pipeline.git
 git push -u marcorigin master
 ----
+
+
+----
+oc get all  -n gitlab-managed-apps
+----
