@@ -164,13 +164,6 @@ oc logs dynatrace-service-6f7848749-wfgw4 --follow
 ----
 
 
-See https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
-
-----
-git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
-
-cd examples/onboarding-carts
-----
 
 ----
 keptn create project sockshop111 --shipyard=./shipyard.yaml --git-token=<gitlab token> --git-user=<gitlab user>  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
@@ -182,6 +175,17 @@ Project sockshop111 created
 Stage test created
 Shipyard successfully processed
 ----
+
+git clone https://github.com/keptn/examples.git
+cd examples/onboarding-carts
+keptn onboard service carts --project=sockshop111 --chart=./carts
+Starting to onboard service
+Handling connection for 8080
+ID of Keptn context: 79df125e-dac7-4e5e-ad43-522cf887f80c
+Handling connection for 8080
+Create umbrella Helm Chart for project sockshop111
+Creating new Keptn service carts in stage test
+Finished creating service carts in project sockshop111
 
 
 image:images/nexus21.png[title="console"]
