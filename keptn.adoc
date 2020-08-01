@@ -238,5 +238,21 @@ oc logs lighthouse-service-6d4b5dcd9-s9h6t -c distributor
 Received a message for topic [sh.keptn.internal.event.service.create]: {"contenttype":"application/json","data":{"project":"sockshop111","service":"carts-db","helmChart":"H4sIFAAAAAAA/ykAK2FIUjBjSE02THk5NWIzVjBkUzVpWlM5Nk9WVjZNV2xqYW5keVRRbz1IZWxtAOxXT2/6RhDl7E8x4tQeDDYQkHz7KT20avMrSqX0WA3rCXGz3t3ujmlRynev1mBjHDCHpEkr+V2snf0zM/a8N2uBll2Yrsa3T2h5tMVcDt4bURRF89msfEZR1H5G8XQ2iKeLOI7ni9lkPojiyXwxH0D07pGcQeEY7SB6s692cv8ToMkeyLpMqwQ2cZCSEzYzXI6/wPckcxC+MuBRW3BkN5kgqIomUJhTchxuqpOiUTyKgs/Orcd11PzfoCzI/SsCcJX/s2mL/1MvCT3/PwBZjmtKINdqrQNLRmYCb3WhOIE4OPA9CQDoLyarUC615QQmiyheBACZOmdtqcJnp9ijAzX/mXIjkcmNK1OYkpF6m5N6473gCv8ns3m7/y9uJlHP/49AGIZB6w7wnKk0gaW3OCbFD1oWOd1KzPIgJ8YUGZNXNA9LCfFzgTMk/AIUgpy70yk5PwzhnjD91WZMPytBAYAlpwsr9tN++EdBjg8jAMfaluoUR9FdFjhGLlwCL7ugHTUa48Z16N/VddsRbwAgcUXy4A2NacxVGRwE0Tt9gdHDvkU2VRJ2u8AHapFpvd0fxVtDCdyTsITs03QkSbC2++kcWTz91HDddg5QcfGwoZGDhzzZ+3r3HkfynplEY0bPxYqsIiY3yvR4/3IaWT6TYTWqbnxlmpf2ZsoxKkEJDDsOCF/NHUOE3W7Y4UDo3GhVpuJfxAoddaw2aDnUj+eiMVb/TuKauxwVrikNV9sEfvT7OtbWV96XF/jGGZkxDJNh7bZsr9+Ofovhb0jpEQvJMCxlloew20GN0kVVdh5CK8ZMka2/dNiqYKjDOjTxRrqlpfnVSsOykHKpZSa2Cfzw+FXz0pLzNKlWGW25UVnhMYrTDr/Hkb6ek5V1U8rFnWfHyVG5tyyRnxIY+684btRjh5jUrhgtV8F/kX/i1gVNhxdf06uzAMw5bUsa0Qhv+HrpmM/W7PdEV/8/cPfN/wTX7v/Tm5tW/58vFjd9//8IXOz/v+w/flcHreSqVo2Keg0hqmrIT1R6ZEotObOo+ZNRLWa0a+LlpS3NP5BDMz7ptifN8bNfdo8ePXr8h/BPAAAA///heHaOABgAAA==","deploymentStrategies":{"*":"direct"},"eventContext":{"keptnContext":"3878f8c0-b6bb-47a4-b952-59109e8a186c","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjczNjAwMjF9.RTItxs4nNzc-ZT1z33Cht0mxnUb5oR5Rxze1iL05SJg"}},"id":"edac1ad8-60db-408b-ae74-5c32e7b4778e","shkeptncontext":"3878f8c0-b6bb-47a4-b952-59109e8a186c","source":"https://github.com/keptn/keptn/api","specversion":"0.2","time":"2020-08-01T04:27:01.919032794Z","type":"sh.keptn.internal.event.service.create"}
 Received a message for topic [sh.keptn.event.configuration.change]: {"contenttype":"application/json","data":{"canary":{"action":"set","value":100},"eventContext":{"keptnContext":"a1756959-bf11-40da-9898-63b53b82760a","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjczNjAwODZ9.K3Ta6bV9lgWZExuTLwt53g-znG-bBUgWEy-D6_dsWzs"},"labels":null,"project":"sockshop111","service":"carts-db","stage":"","valuesCanary":{"image":"docker.io/mongo:4.2.2"}},"id":"d8057145-95a6-4191-8849-7e989d7bf050","shkeptncontext":"a1756959-bf11-40da-9898-63b53b82760a","source":"https://github.com/keptn/keptn/cli#configuration-change","specversion":"0.2","time":"2020-08-01T04:28:06.916753285Z","type":"sh.keptn.event.configuration.change"}
 ----
+
+
+----
+git clone --branch release-0.6.2 https://github.com/keptn/examples.git --single-branch
+----
+
+----
+keptn create project sockshopgate --shipyard=./shipyard-quality-gates.yaml --git-token=Cxx6CFg-Bs9pt8TZAEzw --git-user=marcredhat  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
+Starting to create project
+Handling connection for 8080
+ID of Keptn context: 2f0e7f63-4472-4270-aedf-e1e3b5d79e8e
+Handling connection for 8080
+Project sockshopgate created
+Stage hardening created
+Shipyard successfully processed
+----
 image:images/nexus21.png[title="console"]
 
