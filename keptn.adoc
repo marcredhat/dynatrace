@@ -173,11 +173,14 @@ cd examples/onboarding-carts
 ----
 
 ----
-Create a github token from https://github.com/settings/tokens/new
-
-keptn create project sockshop --shipyard=./shipyard.yaml --git-user=marcredhat --git-token=<github token> --git-remote-url=https://github.com/marcredhat
-
-keptn onboard service carts --project=sockshop --chart=./carts
+keptn create project sockshop111 --shipyard=./shipyard.yaml --git-token=<gitlab token> --git-user=<gitlab user>  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
+Starting to create project
+Handling connection for 8080
+ID of Keptn context: 133ff368-ba8d-48fc-958d-734583bf2fa2
+Handling connection for 8080
+Project sockshop111 created
+Stage test created
+Shipyard successfully processed
 ----
 
 
