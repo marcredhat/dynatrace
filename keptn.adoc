@@ -1,0 +1,185 @@
+
+
+== Keptn - event-based control plane for continuous delivery and automated operations for cloud-native applications
+----
+mkdir keptn
+oc new-project keptn
+oc project keptn
+curl -sL https://get.keptn.sh | sudo -E bash
+----
+
+
+----
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:default
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn-configuration-service
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:builder                       
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-default                       
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:deployer                      
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-api-service            
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-helm-service            
+oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-lighthouse-service
+----
+
+----
+keptn install --platform=openshift
+keptn creates the folder /root/.keptn/ to store logs and possibly creds.
+Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz
+Installing Keptn ...
+Please enter the following information or press enter to keep the old value:
+Openshift Server URL []: https://api.ocp4.local:6443
+....
+Using a file-based storage for the key because the password-store seems to be not set up.
+Existing Keptn installation found in namespace keptn
+
+Do you want to overwrite this installation? (y/n)
+y
+Start upgrading Helm Chart keptn in namespace: keptn
+----
+
+
+
+See https://tutorials.keptn.sh/tutorials/keptn-installation-openshift-07/index.html?index=..%2F..index#5
+
+
+----
+kubectl -n keptn port-forward service/api-gateway-nginx 8080:80 &
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+----
+
+----
+Keep the above window running and go back to your initial terminal window 
+----
+
+----
+KEPTN_ENDPOINT=http://localhost:8080/api
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+Starting to authenticate
+Successfully authenticated
+Using a file-based storage for the key because the password-store seems to be not set up.
+----
+
+
+----
+Write down the values returned by:
+keptn configure bridge --output
+----
+
+----
+user: keptn
+password: <password>
+----
+
+----
+Ensure that the terminal window with 
+kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+is still running, then
+
+Browse to localhost:8080
+----
+
+
+----
+DT_TENANT=eye15053.live.dynatrace.com
+DT_API_TOKEN=<Dynatrace API token>
+DT_PAAS_TOKEN=<Dynatrace PaaS token>
+oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://localhost:8080/api" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" 
+----
+
+
+
+----
+oc apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
+----
+
+
+----
+oc project
+Using project "keptn" on server "https://api.ocp4.local:6443".
+oc get pods
+NAME                                            READY   STATUS    RESTARTS   AGE
+api-gateway-nginx-5b865b66b8-9x988              1/1     Running   0          19m
+api-service-6d86cb4f88-fqgvp                    1/1     Running   0          19m
+bridge-6594f6b8c-hn4gm                          1/1     Running   0          19m
+dynatrace-service-55dc8cf558-vfx79              1/1     Running   1          9s
+dynatrace-service-distributor-f59bd95fb-hl2rz   1/1     Running   0          9s
+eventbroker-go-5674d9646d-88tv5                 1/1     Running   0          19m
+helm-service-85f8bf5fd6-wjlvn                   2/2     Running   2          19m
+keptn-nats-cluster-0                            3/3     Running   0          19m
+lighthouse-service-6d4b5dcd9-r5mrs              2/2     Running   2          19m
+mongodb-datastore-647b5bc584-x88tg              2/2     Running   2          19m
+remediation-service-cf4b7b97f-qlq5q             2/2     Running   2          19m
+shipyard-service-5c98f89f4c-znscx               2/2     Running   2          19m
+----
+
+----
+keptn configure monitoring dynatrace
+----
+
+
+image:images/nexus20.png[title="console"]
+
+
+
+----
+cat ./shipyard.yaml
+stages:
+  - name: "dev"
+    deployment_strategy: "direct"
+    test_strategy: "functional"
+  - name: "staging"
+    approval_strategy:
+      pass: "automatic"
+      warning: "manual"
+    deployment_strategy: "blue_green_service"
+    test_strategy: "performance"
+  - name: "production"
+    approval_strategy:
+      pass: "manual"
+      warning: "manual"
+    deployment_strategy: "blue_green_service"
+    remediation_strategy: "automated
+----
+
+
+----
+keptn create project marc2 --shipyard=./shipyard.yaml
+----
+
+
+----
+oc logs dynatrace-service-6f7848749-wfgw4 --follow
+
+{"timestamp":"2020-07-26T02:41:07.020914691Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
+{"timestamp":"2020-07-26T02:41:07.021217513Z","logLevel":"INFO","message":"Creating Dashboard for project marc2"}
+{"timestamp":"2020-07-26T02:41:07.296897299Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.29707368Z","logLevel":"INFO","message":"Dynatrace dashboard created successfully. You can view it here: https://eye15053.live.dynatrace.com/#dashboards"}
+{"timestamp":"2020-07-26T02:41:07.385872921Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
+{"timestamp":"2020-07-26T02:41:07.493885101Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.604932139Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.719819202Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+{"timestamp":"2020-07-26T02:41:07.814504617Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+----
+
+
+See https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
+
+----
+git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
+
+cd examples/onboarding-carts
+----
+
+----
+Create a github token from https://github.com/settings/tokens/new
+
+keptn create project sockshop --shipyard=./shipyard.yaml --git-user=marcredhat --git-token=<github token> --git-remote-url=https://github.com/marcredhat
+
+keptn onboard service carts --project=sockshop --chart=./carts
+----
+
+
+image:images/nexus21.png[title="console"]
+
