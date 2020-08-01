@@ -189,5 +189,26 @@ Creating new Keptn service carts in stage test
 Finished creating service carts in project sockshop111
 ----
 
+----
+https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
+----
+
+
+
+----
+
+ keptn add-resource --project=sockshop111 --service=carts --stage=test --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
+ Adding resource jmeter/basiccheck.jmx to service carts in stage test in project sockshop111
+ Handling connection for 8080
+ Resource has been uploaded.
+
+
+ keptn add-resource --project=sockshop111 --service=carts --stage=test  --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
+ Adding resource jmeter/load.jmx to service carts in stage test in project sockshop111
+ Handling connection for 8080
+ Resource has been uploaded.
+----
+
+
 image:images/nexus21.png[title="console"]
 
