@@ -245,7 +245,7 @@ git clone --branch release-0.6.2 https://github.com/keptn/examples.git --single-
 ----
 
 ----
-keptn create project sockshopgate --shipyard=./shipyard-quality-gates.yaml --git-token=Cxx6CFg-Bs9pt8TZAEzw --git-user=marcredhat  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
+keptn create project sockshopgate --shipyard=./shipyard-quality-gates.yaml --git-token=<gitlab token>  --git-user=<gitlab user>  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
 Starting to create project
 Handling connection for 8080
 ID of Keptn context: 2f0e7f63-4472-4270-aedf-e1e3b5d79e8e
