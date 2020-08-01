@@ -209,6 +209,14 @@ https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
  Resource has been uploaded.
 ----
 
-
+----
+keptn onboard service carts --project=sockshop111 --chart=./carts
+Starting to onboard service
+Handling connection for 8080
+ID of Keptn context: 8d832271-ab33-4e49-bc0b-8542c32b0d43
+Handling connection for 8080
+Creating new Keptn service carts in stage test
+Service already exists
+----
 image:images/nexus21.png[title="console"]
 
