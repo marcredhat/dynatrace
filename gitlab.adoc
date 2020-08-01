@@ -1,0 +1,20 @@
+== Connect Gitlab to OpenShift 4.4+ cluster 
+
+----
+oc cluster-info | grep 'Kubernetes master' | awk '/http/ {print $NF}'
+https://api.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com:6443
+----
+
+----
+oc get secrets | grep default-token
+default-token-prgjf                   kubernetes.io/service-account-token   4      29h
+default-token-rzzq6                   kubernetes.io/service-account-token   4      29h
+----
+
+----
+oc get secret default-token-prgjf -o jsonpath="{['data']['ca\.crt']}" | base64 --decode
+----
+
+----
+oc whoami -t
+----
