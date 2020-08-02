@@ -84,6 +84,9 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
  12. Dynatrace and OpenShift Service Mesh (https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc)   
  
  14. Publish Spring Boot Actuator custom metrics on Dynatrace
+ 
+ 15. Build and deploy Quarkus apps on OpenShift 4.4+
+     Package the Quarkus apps with Dynatrace OneAgent SDK; monitor Quarkus apps running in OpenShift
 ----
 
 
@@ -610,6 +613,12 @@ Video: https://www.youtube.com/watch?v=VkbGxXOXRj8
 See https://github.com/marcredhat/dynatrace/blob/master/springboot.adoc
 
 Video: https://www.youtube.com/watch?v=Wm7h6bqsqH0
+
+
+== 15. Build and deploy Quarkus apps on OpenShift 4.4+
+==     Package the Quarkus apps with Dynatrace OneAgent SDK; monitor Quarkus apps running in OpenShift
+
+See https://github.com/marcredhat/dynatrace/blob/master/quarkus.adoc
 
 ----
 Links:
