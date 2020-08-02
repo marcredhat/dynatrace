@@ -1,0 +1,113 @@
+
+
+== Build and deploy Quarkus apps on OpenShift 4.4+
+== Package the Quarkus apps with Dynatrace OneAgent SDK; monitor Quarkus apps running in OpenShift
+
+
+== Install Maven 3.6.3+
+
+----
+wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+unzip apache-maven-3.6.3-bin.zip
+export PATH="/root/quarkusocp/apache-maven-3.6.3/bin:${PATH}"
+cp /root/quarkusocp/apache-maven-3.6.3/bin/mvn /usr/bin
+----
+
+----
+mvn io.quarkus:quarkus-maven-plugin:1.6.1.Final:create     -DprojectGroupId=org.acme  \
+-DprojectArtifactId=openshift-quickstart     -DclassName="org.acme.rest.GreetingResource"  \
+-Dpath="/greeting"     -Dextensions="openshift"
+----
+
+----
+cd openshift-quickstart
+----
+
+Add to pom.xml:
+ <!-- Marc added https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk  -->
+        <dependency>
+                  <groupId>com.dynatrace.oneagent.sdk.java</groupId>
+                  <artifactId>oneagent-sdk</artifactId>
+                  <version>1.7.0</version>
+                  <scope>compile</scope>
+        </dependency>
+
+
+Add <quarkus.http.test-port>8080</quarkus.http.test-port>
+
+cat src/main/resources/application.properties
+# Configuration file
+# key = value
+#quarkus.kubernetes.host=api.cluster-dynatrac-03ed.dynatrac-03ed.example.opentlc.com=
+quarkus.kubernetes.host=api.apps.ocp4.local:6443
+quarkus.kubernetes.port=6443
+quarkus.kubernetes-client.trust-certs=true
+
+----
+To test locally:
+mvn quarkus:dev
+----
+
+----
+./mvnw clean package -Dquarkus.container-image.build=true
+
+./mvnw clean package -Dquarkus.kubernetes.deploy=true
+----
+
+-----
+.....
+[INFO] Checking for existing resources in: /root/quarkusocp/openshift-quickstart/src/main/kubernetes.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesProcessor] Generated the Kubernetes manifests: 'kubernetes.json,openshift.yml,kubernetes.yml,openshift.json' in '/root/quarkusocp/openshift-quickstart/target/kubernetes'
+[INFO] [io.quarkus.container.image.s2i.deployment.S2iProcessor] Performing s2i binary build with jar on server: https://api.apps.ocp4.local:6443/ in namespace:keptn.
+.....
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Deploying to openshift server: https://api.apps.ocp4.local:6443/ in namespace: keptn.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: ServiceAccount openshift-quickstart.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: Service openshift-quickstart.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: ImageStream openshift-quickstart.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: ImageStream s2i-java.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: BuildConfig openshift-quickstart.
+[INFO] [io.quarkus.kubernetes.deployment.KubernetesDeployer] Applied: DeploymentConfig openshift-quickstart.
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 126788ms
+[INFO] BUILD SUCCESS
+----
+
+----
+oc logs openshift-quickstart-1-build
+....
+Successfully pushed image-registry.openshift-image-registry.svc:5000/keptn/openshift-quickstart@sha256:c810a15876baa9706e98a37819228b901b081e7e4bcc5523a60108a60bd2ec77
+Push successful
+----
+
+
+----
+oc logs openshift-quickstart-1-h5bl6
+....
+2020-08-01 21:32:14,121 WARN  [io.qua.config] (main) Unrecognized configuration key "quarkus.kubernetes.port" was provided; it will be ignored; verify that the dependency extension for this configuration is set or you did not make a typo
+2020-08-01 21:32:15,296 INFO  [io.quarkus] (main) openshift-quickstart 1.0-SNAPSHOT on JVM (powered by Quarkus 1.6.1.Final) started in 1.514s. Listening on: http://0.0.0.0:8080
+2020-08-01 21:32:15,297 INFO  [io.quarkus] (main) Profile prod activated.
+2020-08-01 21:32:15,297 INFO  [io.quarkus] (main) Installed features: [cdi, kubernetes, resteasy]
+----
+
+----
+oc logs openshift-quickstart-1-h5bl6 | grep oneagent
+....
+exec java -Dquarkus.http.host=0.0.0.0 .... -XX:+ExitOnOutOfMemoryError -cp /deployments/lib/com.dynatrace.oneagent.sdk.java.oneagent-sdk-1.7.0
+....
+----
+
+----
+oc expose svc openshift-quickstart
+route.route.openshift.io/openshift-quickstart exposed
+----
+
+----
+oc get route
+NAME                    HOST/PORT                                     PATH   SERVICES                PORT   TERMINATION   WILDCARD
+openshift-quickstart    openshift-quickstart-keptn.apps.ocp4.local           openshift-quickstart    http                 None
+----
+
+
+----
+Generate traffic to the Quarkus app:
+ab -n 10000 -c 100 http://openshift-quickstart-keptn.apps.ocp4.local/
+---- 
