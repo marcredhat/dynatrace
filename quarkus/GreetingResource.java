@@ -23,6 +23,7 @@ public class GreetingResource {
     public String hello() {
          String url="/";
 	 OneAgentSDK oneAgentSDK = OneAgentSDKFactory.createInstance();
+	 oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");
 	 webAppInfo = oneAgentSDK.createWebApplicationInfo("servername", "BillingService", "/billing");
 	 IncomingWebRequestTracer incomingWebrequestTracer = oneAgentSDK.traceIncomingWebRequest(webAppInfo, url, "GET");
 	 incomingWebrequestTracer.start();
