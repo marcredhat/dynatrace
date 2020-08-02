@@ -134,6 +134,8 @@ openshift-quickstart    openshift-quickstart-keptn.apps.ocp4.local           ope
 ----
 
 
+image:images/quarkus2.png[title="console"]
+
 ----
 Generate traffic to the Quarkus app:
 ab -n 10000 -c 100 http://openshift-quickstart-keptn.apps.ocp4.local/
