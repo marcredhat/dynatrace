@@ -4,9 +4,8 @@
 == Package the Quarkus apps with Dynatrace OneAgent SDK; monitor Quarkus apps running in OpenShift
 
 
-== Install Maven 3.6.3+
-
 ----
+Install Maven 3.6.3+
 wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
 unzip apache-maven-3.6.3-bin.zip
 export PATH="/root/quarkusocp/apache-maven-3.6.3/bin:${PATH}"
@@ -94,6 +93,16 @@ oc logs openshift-quickstart-1-h5bl6 | grep oneagent
 exec java -Dquarkus.http.host=0.0.0.0 .... -XX:+ExitOnOutOfMemoryError -cp /deployments/lib/com.dynatrace.oneagent.sdk.java.oneagent-sdk-1.7.0
 ....
 ----
+
+
+----
+oc get pods | grep quickstart
+openshift-quickstart-1-build                     0/1     Completed           0          4m52s
+openshift-quickstart-1-deploy                    0/1     Completed           0          3h13m
+openshift-quickstart-2-7cgp9                     1/1     Running             0          2m9s
+openshift-quickstart-2-deploy                    0/1     Completed           0          2m14s
+----
+
 
 ----
 oc expose svc openshift-quickstart
