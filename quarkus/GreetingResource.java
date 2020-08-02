@@ -21,24 +21,29 @@ public class GreetingResource {
 
 
     public String hello() {
-         String url="/";
+         String url="http://marc-openshift-quickstart-dynatrace.apps.ocp4.local";
 	 OneAgentSDK oneAgentSDK = OneAgentSDKFactory.createInstance();
+	 //next instruction will be ignored as we are NOT tracing yet
 	 oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");
-	 webAppInfo = oneAgentSDK.createWebApplicationInfo("servername", "BillingService", "/billing");
+	 webAppInfo = oneAgentSDK.createWebApplicationInfo("servername", "BillingService", "/");
 	 IncomingWebRequestTracer incomingWebrequestTracer = oneAgentSDK.traceIncomingWebRequest(webAppInfo, url, "GET");
 	 incomingWebrequestTracer.start();
 		try {
 			//response.setContent("Hello world!".getBytes());
 			//response.setStatusCode(200);
+			oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");
 			incomingWebrequestTracer.setStatusCode(200);
 		} catch (Exception e) {
+			oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");
 			// we assume, container is sending http 500 in case of exception is thrown while serving an request:
 			incomingWebrequestTracer.error(e);
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
+			oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");
 			incomingWebrequestTracer.end();
 		}
+	 oneAgentSDK.addCustomRequestAttribute("marctracing","marctracing");   
 	 return "hello";
     }
 }
