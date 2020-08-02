@@ -22,7 +22,8 @@ mvn io.quarkus:quarkus-maven-plugin:1.6.1.Final:create     -DprojectGroupId=org.
 cd openshift-quickstart
 ----
 
-Add to pom.xml:
+----
+Add the Dynatrace OneAgent SDK  to pom.xml:
  <!-- Marc added https://mvnrepository.com/artifact/com.dynatrace.oneagent.sdk.java/oneagent-sdk  -->
         <dependency>
                   <groupId>com.dynatrace.oneagent.sdk.java</groupId>
@@ -30,10 +31,19 @@ Add to pom.xml:
                   <version>1.7.0</version>
                   <scope>compile</scope>
         </dependency>
+----
 
 
-Add <quarkus.http.test-port>8080</quarkus.http.test-port>
+----
+If you need to change the default HTTP port, add the following to pom.xml
+<quarkus.http.test-port>8080</quarkus.http.test-port>
+----
 
+
+My pom.xml with the 2 changes described above is at https://github.com/marcredhat/dynatrace/blob/master/quarkus/pom.xml
+
+----
+Change the application.proporties to point to your OpenShift 4 cluster:
 cat src/main/resources/application.properties
 # Configuration file
 # key = value
@@ -41,6 +51,7 @@ cat src/main/resources/application.properties
 quarkus.kubernetes.host=api.apps.ocp4.local:6443
 quarkus.kubernetes.port=6443
 quarkus.kubernetes-client.trust-certs=true
+----
 
 ----
 To test locally:
@@ -120,3 +131,6 @@ openshift-quickstart    openshift-quickstart-keptn.apps.ocp4.local           ope
 Generate traffic to the Quarkus app:
 ab -n 10000 -c 100 http://openshift-quickstart-keptn.apps.ocp4.local/
 ---- 
+
+image:images/quarkus1.png[title="console"]
+
