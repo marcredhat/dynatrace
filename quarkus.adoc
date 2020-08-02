@@ -143,3 +143,4 @@ ab -n 10000 -c 100 http://openshift-quickstart-keptn.apps.ocp4.local/
 
 image:images/quarkus1.png[title="console"]
 
+image:images/quarkus3.png[title="console"]
