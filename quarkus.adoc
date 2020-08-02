@@ -114,6 +114,13 @@ openshift-quickstart-2-7cgp9                     1/1     Running             0  
 openshift-quickstart-2-deploy                    0/1     Completed           0          2m14s
 ----
 
+----
+oc rsh /var/lib/dynatrace/oneagent
+cat /var/lib/dynatrace/oneagent/agent/runtime/startStatus.info
+
+Dynatrace OneAgent has successfully connected to Dynatrace Cluster Node.
+You are all set. The Dynatrace OneAgent is fully operational.
+----
 
 ----
 oc expose svc openshift-quickstart
