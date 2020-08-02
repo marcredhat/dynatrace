@@ -620,6 +620,10 @@ Video: https://www.youtube.com/watch?v=Wm7h6bqsqH0
 
 See https://github.com/marcredhat/dynatrace/blob/master/quarkus.adoc
 
+Video: https://www.youtube.com/watch?v=9V-eGz7bpUU
+
+image:images/quarkus1.png[title="Quarkus on OpenShift 4.4 monitored by Dynatrace"]
+
 ----
 Links:
 
