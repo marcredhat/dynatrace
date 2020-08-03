@@ -1,0 +1,25 @@
+
+
+
+See video showing OpenShift 4.4+ / Dynatrace / NeoLoad 7.4  at  https://studio.youtube.com/video/U3T5b8pPW6g/edit/basic
+
+
+----
+See https://www.dynatrace.com/support/help/setup-and-configuration/integrations/third-party-integrations/test-automation-frameworks/neotys-integration/
+
+The integration of Dynatrace with Neotys is fully automated and enables faster test design, execution, and analysis. 
+
+Neotys and Dynatrace data is combined and can be viewed in the Neotys dashboard, 
+thereby allowing for automated root cause analysis and multi-dimensional diagnostics.
+
+DynatraceEvents: Links a load testing event to all the services used by an application monitored by Dynatrace and 
+sends the following data: Neoload Project, Test and Scenario Name, NeoLoadWeb Frontend URL.
+
+DynatraceMonitoring - Dynatrace > NeoLoad: Retrieves infrastructure and service metrics from Dynatrace and 
+inserts them in NeoLoad External Data so that you can correlate NeoLoad and Dynatrace metrics within NeoLoad. In NeoLoad GUI version 6.8 and later, these metrics are sent to NeoLoad Web:
+
+Infrastructure metrics:
+Service metrics:
+DynatraceMonitoring - Neoload > Dynatrace: Sends the global statistics of the test to Dynatrace so that they can be used as custom metrics in Dynatrace dashboards.
+
+----
