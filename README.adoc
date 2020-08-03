@@ -631,7 +631,7 @@ image:images/quarkus1.png[title="Quarkus on OpenShift 4.4 monitored by Dynatrace
 
 See https://github.com/marcredhat/dynatrace/blob/master/neoload.adoc
 
-Video: https://studio.youtube.com/video/U3T5b8pPW6g
+Video: https://www.youtube.com/watch?v=U3T5b8pPW6g
 
 ----
 Links:
