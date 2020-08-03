@@ -87,6 +87,8 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
  
  15. Build and deploy Quarkus apps on OpenShift 4.4+
      Package the Quarkus apps with Dynatrace OneAgent SDK; monitor Quarkus apps running in OpenShift
+     
+ 16. OpenShift 4.4+ / Dynatrace / NeoLoad 7.4
 ----
 
 
@@ -623,6 +625,13 @@ See https://github.com/marcredhat/dynatrace/blob/master/quarkus.adoc
 Video: https://www.youtube.com/watch?v=9V-eGz7bpUU
 
 image:images/quarkus1.png[title="Quarkus on OpenShift 4.4 monitored by Dynatrace"]
+
+
+16. OpenShift 4.4+ / Dynatrace / NeoLoad 7.4
+
+See https://github.com/marcredhat/dynatrace/blob/master/neoload.adoc
+
+Video: https://studio.youtube.com/video/U3T5b8pPW6g
 
 ----
 Links:
