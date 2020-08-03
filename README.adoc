@@ -627,7 +627,7 @@ Video: https://www.youtube.com/watch?v=9V-eGz7bpUU
 image:images/quarkus1.png[title="Quarkus on OpenShift 4.4 monitored by Dynatrace"]
 
 
-16. OpenShift 4.4+ / Dynatrace / NeoLoad 7.4
+== 16. OpenShift 4.4+ / Dynatrace / NeoLoad 7.4
 
 See https://github.com/marcredhat/dynatrace/blob/master/neoload.adoc
 
