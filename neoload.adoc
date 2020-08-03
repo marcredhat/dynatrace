@@ -1,7 +1,9 @@
 
 
+== OpenShift 4.4+ / Dynatrace / NeoLoad 7.4 
 
-See video showing OpenShift 4.4+ / Dynatrace / NeoLoad 7.4  at  https://studio.youtube.com/video/U3T5b8pPW6g/edit/basic
+
+See video showing OpenShift 4.4+ / Dynatrace / NeoLoad 7.4  at  https://studio.youtube.com/video/U3T5b8pPW6g
 
 
 ----
