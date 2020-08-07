@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: "2020-08-07T17:51:33Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/instance: keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: configuration-volume
+    app.kubernetes.io/part-of: keptn-keptn
+    helm.sh/chart: control-plane-0.7.0
+  name: configuration-volume
+  namespace: keptn
+  resourceVersion: "9884425"
+  selfLink: /api/v1/namespaces/keptn/persistentvolumeclaims/configuration-volume
+  uid: b4930856-e64d-4b02-a239-ebea94bd75f8
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+  volumeMode: Filesystem
+  nfs:
+    path: /mnt/storage
+    server: 10.1.8.1
+  storageClassName: non-dynamic
+status:
+  phase: Pending
