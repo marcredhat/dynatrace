@@ -1,0 +1,92 @@
+----
+https://github.com/mediro-ict/activegate_python_ssl_plugin
+https://answers.dynatrace.com/questions/224997/does-dynatrace-monitor-ssl-certificate-validation.html
+
+https://support.microfocus.com/kb/doc.php?id=7020654
+https://www.ibm.com/support/pages/apache-httpd-fails-start-resulting-address-already-use-makesock-could-not-bind-address-error
+https://documentation.suse.com/sles/12-SP4/html/SLES-all/cha-apache2.html#sec-apache2-ssl
+https://www.openssl.org/docs/man1.1.0/man1/rehash.html
+https://letsencrypt.org/docs/certificates-for-localhost/
+ss instead of netstat
+nmap tumbleweed.marcredhat.localdomain
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-06 19:17 PDT
+Nmap scan report for tumbleweed.marcredhat.localdomain (192.168.122.38)
+Host is up (0.0000080s latency).
+Not shown: 998 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+443/tcp open  https
+
+openssl rehash
+Skipping /var/lib/ca-certificates/openssl, can't write
+
+
+=====
+cd /var/lib/ca-certificates/openssl/
+sudo openssl req -new > new.cert.csr
+tumbleweed.marcredhat.localdomain
+
+sudo openssl rsa -in privkey.pem -out new.cert.key
+
+sudo openssl x509 -in new.cert.csr -out new.cert.cert -req \
+> -signkey new.cert.key -days 1
+Signature ok
+subject=C = FR, ST = FR, L = FR, O = RH, OU = FR, CN = tumbleweed.marcredhat.localdomain
+Getting Private key
+
+sudo cp new.cert.cert /etc/apache2/ssl.crt/server.crt
+sudo cp new.cert.key /etc/apache2/ssl.key/server.key
+sudo cp new.cert.cert /var/lib/ca-certificates/openssl
+
+a2enmod ssl
+
+cp /etc/apache2/vhosts.d/vhost-ssl.template /etc/apache2/vhosts.d/tumbleweed.marcredhat.localdomain.conf
+
+/etc/apache2/listen.conf
+
+
+openssl s_client -connect tumbleweed.marcredhat.localdomain:443
+
+
+
+
+== Plugin SDK
+
+https://help.dreamhost.com/hc/en-us/articles/115000695551-Installing-and-using-virtualenv-with-Python-3
+371  pip3 install virtualenv --user
+ 372  which virtualenv
+ 373  virtualenv oneagent
+ 374  source oneagent/bin/activate
+
+
+
+https://dynatrace.github.io/plugin-sdk/readme.html
+
+
+
+pip3 install plugin_sdk-1.197.134.20200723-143315-py3-none-any.whl
+
+
+(oneagent) [marc@dell-r730-001 ~]$ plugin_sdk start_demo_app
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://0.0.0.0:8769/
+Hit Ctrl-C to quit.
+=====
+
+
+curl -L  https://github.com/juliusloman/dynatrace-oneagent-plugin-sslcertcheck/releases/download/1.01/custom.python.sslcertcheck_plugin.zip -o custom.python.sslcertcheck_plugin.zip
+git clone https://github.com/juliusloman/dynatrace-oneagent-plugin-sslcertcheck.git
+cd
+
+
+
+ssh marc@sle15
+
+cd /opt/dynatrace/oneagent/plugin_deployment
+sudo curl -L  https://github.com/juliusloman/dynatrace-oneagent-plugin-sslcertcheck/releases/download/1.01/custom.python.sslcertcheck_plugin.zip -o custom.python.sslcertcheck_plugin.zip
+sudo unzip custom.python.sslcertcheck_plugin.zip
+
+
+ls -latr /opt/dynatrace/oneagent/log/plugin/
+
+----
