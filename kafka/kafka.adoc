@@ -15,3 +15,9 @@ oc apply -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
 oc apply -f https://strimzi.io/examples/latest/kafka/kafka-ephemeral-single.yaml -n kafka 
 ----
 
+----
+oc delete -f https://raw.githubusercontent.com/marcredhat/strimzi-demo/master/sample-apps/job-sample-producer.yaml
+oc delete -f https://raw.githubusercontent.com/marcredhat/strimzi-demo/master/sample-apps/job-sample-consumer.yaml
+oc create -f https://raw.githubusercontent.com/marcredhat/strimzi-demo/master/sample-apps/job-sample-producer.yaml
+oc create -f https://raw.githubusercontent.com/marcredhat/strimzi-demo/master/sample-apps/job-sample-consumer.yaml
+----
