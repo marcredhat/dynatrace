@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-mongo-client
-  namespace: default
+  namespace: mongodb
 spec:
   containers:
   - name: my-mongo-client
