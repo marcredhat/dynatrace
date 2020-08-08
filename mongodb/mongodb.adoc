@@ -56,9 +56,20 @@ MongoDB server version: 4.4.0
 
 
 
-
-
-
+----
+kubectl exec -it my-mongo-client mongo -- --host=my-mongo
+MongoDB shell version v4.4.0
+connecting to: mongodb://my-mongo:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c0fabe6b-3c8f-450f-b7e3-79b3162e096f") }
+MongoDB server version: 4.4.0
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+>
+----
 
 
 
