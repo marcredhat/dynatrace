@@ -86,6 +86,26 @@ Successfully added user: { "user" : "admin", "roles" : [ "root" ] }
 >
 ----
 
+
+
+kubectl exec -it  my-mongo-6d465b98c9-vpnnk  -- /bin/bash
+
+root@my-mongo:/# mongo
+MongoDB shell version v4.4.0
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3c58ab76-29ee-4daf-a09d-b8eb766ebd45") }
+MongoDB server version: 4.4.0
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+>
+
+
+
+
 See https://www.mongodb.com/blog/post/introducing-the-mongodb-enterprise-operator-for-kubernetes
 
 
