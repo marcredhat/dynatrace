@@ -1,0 +1,18 @@
+
+
+
+See https://www.mongodb.com/blog/post/introducing-the-mongodb-enterprise-operator-for-kubernetes
+
+
+----
+oc new-project mongodb
+oc apply -f https://raw.githubusercontent.com/mongodb/mongodb-enterprise-kubernetes/master/mongodb-enterprise.yaml
+----
+
+----
+oc get pods
+NAME                                           READY   STATUS    RESTARTS   AGE
+mongodb-enterprise-operator-547f56d856-s5fh8   1/1     Running   0          49s
+----
+
+
