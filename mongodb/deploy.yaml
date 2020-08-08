@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-mongo
+spec:
+  selector:
+    matchLabels:
+      app: my-mongo
+      environment: my
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: my-mongo
+        environment: my
+    spec:
+      hostname: my-mongo
+      #serviceAccountName: samarc
+      volumes:
+        - name: my-mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: marco-mongo-pvc
+      containers:
+        - name: my-mongo
+          image: mongo:4.4.0
+          serviceAccountName: samarc
+          securityContext:
+              runAsUser: 0
+              fsGroup: 0
+              privileged: true
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: my-mongo-persistent-storage
+              mountPath: /marc
