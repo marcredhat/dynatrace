@@ -72,7 +72,19 @@ Questions? Try the MongoDB Developer Community Forums
 ----
 
 
-
+----
+> use admin
+switched to db admin
+>
+>
+> db.createUser({
+...     user: "admin",
+...     pwd: "<password>",
+...     roles: ["root"]
+...   })
+Successfully added user: { "user" : "admin", "roles" : [ "root" ] }
+>
+----
 
 See https://www.mongodb.com/blog/post/introducing-the-mongodb-enterprise-operator-for-kubernetes
 
