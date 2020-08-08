@@ -25,6 +25,7 @@ spec:
       containers:
         - name: my-mongo
           image: mongo:4.4.0
+          args: ["--auth"] # this flag will enable authentication
           serviceAccountName: samarc
           securityContext:
               runAsUser: 0
