@@ -1,6 +1,49 @@
 
 
 
+https://medium.com/@vladroff/mongodb-ssl-auth-on-kubernetes-ee14bf1a744f
+
+----
+oc create -f - <<EOF
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-mongo-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: non-dynamic
+EOF
+----
+
+----
+oc create -f - <<EOF
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0062
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+  - ReadWriteOnce
+  nfs:
+    path: /mnt/storage
+    server: 10.1.8.11
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: non-dynamic
+EOF
+----
+
+----
+oc get pvc
+NAME           STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+my-mongo-pvc   Bound    pv0062   10Gi       RWO            non-dynamic    3s
+----
+
 See https://www.mongodb.com/blog/post/introducing-the-mongodb-enterprise-operator-for-kubernetes
 
 
