@@ -44,6 +44,25 @@ NAME           STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 my-mongo-pvc   Bound    pv0062   10Gi       RWO            non-dynamic    3s
 ----
 
+
+----
+kubectl exec my-mongo-5d5b45b7fd-npcz2  mongo -- --eval "db.adminCommand('ping')"
+MongoDB shell version v4.4.0
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("135c3a93-f009-408f-92f9-6d1b5206bc8e") }
+MongoDB server version: 4.4.0
+{ "ok" : 1 }
+----
+
+
+
+
+
+
+
+
+
+
 See https://www.mongodb.com/blog/post/introducing-the-mongodb-enterprise-operator-for-kubernetes
 
 
