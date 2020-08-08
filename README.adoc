@@ -1,5 +1,8 @@
 
-# Using Dynatrace to speed up your CI/CD pipelines and identify quality issues early 
+# Using Dynatrace to monitor Java Enterprise Edition and Quarkus apps, Kafka, Istio Service Mesh etc
+on OpenShift 4.4+
+
+# Speed up your CI/CD pipelines and identify quality issues early 
 
 ##  Dynatrace on OpenShift 4 Workshop
 
