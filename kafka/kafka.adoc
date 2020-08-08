@@ -1,0 +1,17 @@
+
+== Strimzi on OpenShift 4.4+
+
+----
+https://strimzi.io/quickstarts/
+
+https://github.com/rmarting/strimzi-demo
+
+https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/configuration/define-messaging-services/?_ga=2.252272010.2073798033.1596783572-2119976534.1596783572
+----
+
+----
+oc new-project kafka
+oc apply -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
+oc apply -f https://strimzi.io/examples/latest/kafka/kafka-ephemeral-single.yaml -n kafka 
+----
+
