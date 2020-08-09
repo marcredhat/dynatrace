@@ -156,7 +156,11 @@ oc expose deploy my-mongo --type=NodePort
 ----
 
 
+https://docs.mongodb.com/kubernetes-operator/master/tutorial/connect-from-outside-k8s/
 
+----
+
+----
 
 
 
