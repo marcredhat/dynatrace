@@ -151,6 +151,18 @@ MongoDB server version: 4.4.0
 >
 ----
 
+----
+oc expose deploy my-mongo --type=NodePort
+----
+
+
+
+
+
+
+
+
+
 
 
 
