@@ -116,4 +116,16 @@ postgres@postgresql-57cc99864-b6qs2:/$ createdb --encoding=UNICODE --owner=marc 
 ----
 
 
+NOTE: SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL on FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL off.
+
+----
+oc rsync postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/pg_hba.conf .
+
+Change 
+
+oc rsync copy/  postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/
+
+/etc/init.d/postgresql start
+/etc/init.d/postgresql status
+----
 
