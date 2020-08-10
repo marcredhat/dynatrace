@@ -160,6 +160,11 @@ Updating dependencies (including require-dev)
 ----
 
 
+image:../images/drupal1.png[title="Drupal 2"]
+
+image:../images/drupal2.png[title="Drupal 2"]
+
+
 https://www.specbee.com/blogs/AMP-It-up-the-why-and-how-of-drupal-AMP-and-what-it-can-do-to-your-website
 
 
