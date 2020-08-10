@@ -167,5 +167,8 @@ https://www.specbee.com/blogs/AMP-It-up-the-why-and-how-of-drupal-AMP-and-what-i
 #http://drupal-drupal.apps.ocp4.local/admin/modules/install
 ----
 
+https://www.drupal.org/docs/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-module
+
+https://medium.com/@rikdeboer/how-to-dynamically-embed-javascript-in-drupal-anywhere-on-any-page-3f9cd7e64d0c
 
 See also https://www.drupal.org/docs/installing-drupal/drupal-quick-start-command
