@@ -101,6 +101,11 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
  18. Get deep insights into Kafka on OpenShift (Strimzi/AMQ Streams) using Dynatrace
  
  19. Monitor SSL/TLS certificate expiry for external and internal services using Dynatrace 
+ 
+ 20. Scale your Dynatrace API operations;  API mocking and testing with Microcks on OpenShift
+ 
+ 21. Dynatrace real user monitoring on OpenShift 4.4+; Dynatrace Visually complete and Speed index
+     Drupal 9.0.3 with AMP module and PostgreSQL 12.3 backend on OpenShift 4.4
 ----
 
 
@@ -659,6 +664,17 @@ Video: https://www.youtube.com/watch?v=AgfSjL1Kbzc
 == 19. Monitor SSL/TLS certificate expiry for external and internal services using Dynatrace
 
 Video: https://www.youtube.com/watch?v=nphw88CUz1I
+
+ 
+== 20. Scale your Dynatrace API operations;  API mocking and testing with Microcks on OpenShift
+
+Video: https://www.youtube.com/watch?v=1Lq7Kqji-5w
+
+ 
+== 21. Dynatrace real user monitoring on OpenShift 4.4+; Dynatrace Visually complete and Speed index
+       Drupal 9.0.3 with AMP module and PostgreSQL 12.3 backend on OpenShift 4.4
+       
+See https://github.com/marcredhat/dynatrace/tree/master/drupal
 
 
 ----
