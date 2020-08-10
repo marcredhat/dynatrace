@@ -163,19 +163,24 @@ Browse to http://drupal-drupal.apps.ocp4.local/ and
 start configuring your the database connection as shown in the image below
 ----
 
-NOTE: "Host" is the value return by "oc get service postgresql"
+NOTE: "Host" is the value returned by "oc get service postgresql"
 
 
-image:../images/drupaldeploy.png[title="Drupal 1"]
+image:../images/drupaldeploy1.png[title="Drupal 1"]
 
 
 NOTE: You'll run into SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL on FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL off.
 
 ----
+Copy the pg_hba.conf from the PostgreSQL container to your local machine
 oc rsync postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/pg_hba.conf .
 
 Add a line in pg_hba.conf to allow connections from 10.130.0.245. e.g
 host    all		all             10.130.0.0/16		trust
+
+Transfer the updated pg_hba.conf the PostgreSQL container.
+In my case, the file is in a folder named "copy" on my local machine.
+Just as with UNIX rsync, if the directory name ends in a path separator ('/'), only the contents of the directory are copied to the destination
 
 oc rsync copy/  postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/
 ----
