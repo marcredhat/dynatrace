@@ -95,6 +95,25 @@ NOTE: In my case, it's not so I'll recreate the OpenShift service to use the cor
 ----
 oc delete svc  postgresql
 service "postgresql" deleted
-[root@dell-r730-001 ~]# oc expose deployment postgresql --port 5433
+oc expose deployment postgresql --port 5433
 service/postgresql exposed
 ----
+
+== Create user 
+
+----
+oc rsh postgresql-57cc99864-b6qs2
+# su postgres
+postgres@postgresql-57cc99864-b6qs2:/$ createuser --pwprompt --encrypted --no-adduser --no-createdb marc
+Enter password for new role:
+Enter it again:
+----
+
+== Create user 
+
+----
+postgres@postgresql-57cc99864-b6qs2:/$ createdb --encoding=UNICODE --owner=marc marcdb
+----
+
+
+
