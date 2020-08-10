@@ -2,20 +2,36 @@
 == Drupal 9.0.3/PostgreSQL on OpenShift 4.4
 
 
-----
-
-----
-
-https://www.dynatrace.com/platform/digital-experience-monitoring/visually-complete/
+In this lab, we'll use Dynatrace to see and capture the visual experience of a real user 
 
 
 ----
-Visually complete measures exactly how long it takes your web page to become fully loaded visually and ready to be used
+We'll see the complete picture, from the frontend to the backend.
+----
 
-Speed index indicates how fast your page loads through a user's perspective.
+image:../images/drupal1.png[title="Drupal 1"]
+
+image:../images/useractions.png[title="Drupal 1"]
+
+image:../images/usersession.png[title="Drupal 1"]
+
+
+----
+Understand performance issues:
+----
+
+image:../images/waterfallanalysis.png[title="Drupal 1"]
+
+
+----
+Visually complete measures exactly how long it takes your web page to become fully loaded visually and ready to be used:
 ----
 
 image:../images/visuallycomplete.png[title="Visually complete"]
+
+----
+Speed index indicates how fast your page loads through a user's perspective:
+----
 
 image:../images/speedindex.png[title="Speed index"]
 
@@ -183,15 +199,22 @@ image:../images/drupal1.png[title="Drupal 1"]
 image:../images/drupal2.png[title="Drupal 2"]
 
 
-https://www.specbee.com/blogs/AMP-It-up-the-why-and-how-of-drupal-AMP-and-what-it-can-do-to-your-website
-
 
 ----
 #http://drupal-drupal.apps.ocp4.local/admin/modules/install
 ----
 
+
+== Links 
+
+https://www.specbee.com/blogs/AMP-It-up-the-why-and-how-of-drupal-AMP-and-what-it-can-do-to-your-website
+
+https://www.dynatrace.com/platform/real-user-monitoring/
+
+https://www.dynatrace.com/platform/digital-experience-monitoring/visually-complete/
+
 https://www.drupal.org/docs/creating-custom-modules/adding-stylesheets-css-and-javascript-js-to-a-drupal-module
 
 https://medium.com/@rikdeboer/how-to-dynamically-embed-javascript-in-drupal-anywhere-on-any-page-3f9cd7e64d0c
 
-See also https://www.drupal.org/docs/installing-drupal/drupal-quick-start-command
+https://www.drupal.org/docs/installing-drupal/drupal-quick-start-command
