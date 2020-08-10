@@ -148,6 +148,8 @@ Retype new password:
 passwd: password updated successfully
 ----
 
+Check the latest release at https://www.drupal.org/project/amp/releases
+
 ----
 # su - marc
 $ composer require drupal/amp
