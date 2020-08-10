@@ -1,5 +1,8 @@
 
-== Drupal 9.0.3 with PostgreSQL 12.3 on OpenShift 4.4
+
+== Dynatrace real user monitoring on OpenShift 4.4+; Dynatrace Visually complete and Speed index
+
+== This lab: Drupal 9.0.3 with PostgreSQL 12.3 on OpenShift 4.4
 
 
 In this lab, we'll use Dynatrace to see and capture the visual experience of a real user 
