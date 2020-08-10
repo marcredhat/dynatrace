@@ -49,7 +49,7 @@ git clone https://github.com/marcredhat/drupal-on-kubernetes-sample
 cd drupal-on-kubernetes-sample/kubernetes/
 oc create -f local-volumes.yaml
 oc create -f postgres.yaml
-oc  create -f drupal.yaml
+oc create -f drupal.yaml
 ----
 
 
