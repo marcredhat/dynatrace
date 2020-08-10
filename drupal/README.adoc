@@ -155,3 +155,9 @@ Check the latest release at https://www.drupal.org/project/amp/releases
 $ composer create-project drupal/recommended-project marc --stability dev 
 $ composer require 'drupal/amp:^3.4'
 ----
+
+Create directory  /opt/drupal/web/modules/amp
+chmod -R 777 /opt/drupal/web/modules
+
+http://drupal-drupal.apps.ocp4.local/admin/modules/install
+
