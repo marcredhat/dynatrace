@@ -150,16 +150,15 @@ passwd: password updated successfully
 
 Check the latest release at https://www.drupal.org/project/amp/releases
 
+----
 oc rsh drupal-588fdc7c99-5wr6l
 # composer require 'drupal/amp:^3.4'
 Do not run Composer as root/super user! See https://getcomposer.org/root for details
-
-
 ./composer.json has been updated
 Loading composer repositories with package information
 Updating dependencies (including require-dev)
+----
 
-
-
+----
 #http://drupal-drupal.apps.ocp4.local/admin/modules/install
-
+----
