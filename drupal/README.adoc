@@ -121,7 +121,8 @@ NOTE: SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", u
 ----
 oc rsync postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/pg_hba.conf .
 
-Change 
+Add a line in pg_hba.conf to allow connections from 10.130.0.245. e.g
+host    all		all             10.130.0.0/16		trust
 
 oc rsync copy/  postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/
 ----
