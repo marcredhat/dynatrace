@@ -1,0 +1,45 @@
+
+== Drupal 9.0.3/PostgreSQL on OpenShift 4.4
+
+----
+oc new-project drupal
+git clone https://github.com/marcredhat/drupal-on-kubernetes-sample
+cd drupal-on-kubernetes-sample/kubernetes/
+oc create -f local-volumes.yaml
+oc create -f postgres.yaml
+oc  create -f drupal.yaml
+----
+
+
+----
+oc get pvc
+NAME             STATUS   VOLUME           CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+drupal-claim     Bound    local-volume-1   10Gi       RWO                           9s
+postgres-claim   Bound    local-volume-3   10Gi       RWO                           13s
+----
+
+
+----
+oc get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+drupal-588fdc7c99-5wr6l      1/1     Running   0          69s
+postgresql-57cc99864-b6qs2   1/1     Running   0          73s
+----
+
+----
+oc get svc
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+drupal       NodePort    172.30.38.209   <none>        80:30080/TCP   81s
+postgresql   ClusterIP   172.30.111.10   <none>        5432/TCP       85s
+----
+
+----
+oc expose svc drupal
+route.route.openshift.io/drupal exposed
+----
+
+----
+oc get route
+NAME     HOST/PORT                       PATH   SERVICES   PORT   TERMINATION   WILDCARD
+drupal   drupal-drupal.apps.ocp4.local          drupal     80                   None
+----
