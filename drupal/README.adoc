@@ -124,8 +124,15 @@ oc rsync postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/pg_hba.conf .
 Change 
 
 oc rsync copy/  postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/
+----
 
-/etc/init.d/postgresql start
+----
+oc rsh postgresql-57cc99864-b6qs2
+chmod 777 /etc/postgresql/12/main/pg_hba.conf
+----
+
+----
+/etc/init.d/postgresql restart
 /etc/init.d/postgresql status
 ----
 
