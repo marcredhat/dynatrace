@@ -35,6 +35,11 @@ Speed index indicates how fast your page loads through a user's perspective:
 
 image:../images/speedindex.png[title="Speed index"]
 
+
+----
+Let's get to work!
+----
+
 ----
 oc new-project drupal
 git clone https://github.com/marcredhat/drupal-on-kubernetes-sample
