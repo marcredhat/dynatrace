@@ -1,6 +1,24 @@
 
 == Drupal 9.0.3/PostgreSQL on OpenShift 4.4
 
+
+----
+
+----
+
+https://www.dynatrace.com/platform/digital-experience-monitoring/visually-complete/
+
+
+----
+Visually complete measures exactly how long it takes your web page to become fully loaded visually and ready to be used
+
+Speed index indicates how fast your page loads through a user's perspective.
+----
+
+image:../images/visuallycomplete.png[title="Visually complete"]
+
+image:../images/speedindex.png[title="Speed index"]
+
 ----
 oc new-project drupal
 git clone https://github.com/marcredhat/drupal-on-kubernetes-sample
@@ -160,7 +178,7 @@ Updating dependencies (including require-dev)
 ----
 
 
-image:../images/drupal1.png[title="Drupal 2"]
+image:../images/drupal1.png[title="Drupal 1"]
 
 image:../images/drupal2.png[title="Drupal 2"]
 
