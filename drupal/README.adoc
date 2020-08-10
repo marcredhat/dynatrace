@@ -159,6 +159,10 @@ Loading composer repositories with package information
 Updating dependencies (including require-dev)
 ----
 
+
+https://www.specbee.com/blogs/AMP-It-up-the-why-and-how-of-drupal-AMP-and-what-it-can-do-to-your-website
+
+
 ----
 #http://drupal-drupal.apps.ocp4.local/admin/modules/install
 ----
