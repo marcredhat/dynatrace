@@ -151,14 +151,14 @@ Enter password for new role:
 Enter it again:
 ----
 
-== Create user 
+== Create database 
 
 ----
 postgres@postgresql-57cc99864-b6qs2:/$ createdb --encoding=UNICODE --owner=marc marcdb
 ----
 
 
-NOTE: SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL on FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL off.
+NOTE: You'll run into SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL on FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL off.
 
 ----
 oc rsync postgresql-57cc99864-c2fcg:/etc/postgresql/12/main/pg_hba.conf .
