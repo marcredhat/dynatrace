@@ -152,5 +152,6 @@ Check the latest release at https://www.drupal.org/project/amp/releases
 
 ----
 # su - marc
-$ composer require drupal/amp
+$ composer create-project drupal/recommended-project marc --stability dev 
+$ composer require 'drupal/amp:^3.4'
 ----
