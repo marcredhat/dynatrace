@@ -137,3 +137,18 @@ chmod 777 /etc/postgresql/12/main/pg_hba.conf
 /etc/init.d/postgresql status
 ----
 
+== Install the Drupal AMP module
+
+----
+oc rsh drupal-588fdc7c99-5wr6l
+# useradd -m -d /home/marc marc
+# passwd marc
+New password:
+Retype new password:
+passwd: password updated successfully
+----
+
+----
+# su - marc
+$ composer require drupal/amp
+----
