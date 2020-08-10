@@ -158,6 +158,17 @@ postgres@postgresql-57cc99864-b6qs2:/$ createdb --encoding=UNICODE --owner=marc 
 ----
 
 
+----
+Browse to http://drupal-drupal.apps.ocp4.local/ and
+start configuring your the database connection as shown in the image below
+----
+
+NOTE: "Host" is the value return by "oc get service postgresql"
+
+
+image:../images/drupaldeploy.png[title="Drupal 1"]
+
+
 NOTE: You'll run into SQLSTATE[08006] [7] FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL on FATAL: no pg_hba.conf entry for host "10.130.0.245", user "marc", database "marcdb", SSL off.
 
 ----
