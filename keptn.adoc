@@ -8,6 +8,9 @@ oc project keptn
 curl -sL https://get.keptn.sh | sudo -E bash
 ----
 
+
+See https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc
+
 ----
 Deploy OpenShift Service Mesh in the istio-system project
 ----
