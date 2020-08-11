@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: "2020-08-11T05:23:48Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/component: mongodb
+    app.kubernetes.io/instance: keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mongodata
+    app.kubernetes.io/part-of: keptn-keptn
+    helm.sh/chart: mongodb-0.7.0
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:app.kubernetes.io/part-of: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:accessModes: {}
+        f:resources:
+          f:requests:
+            .: {}
+            f:storage: {}
+        f:volumeMode: {}
+      f:status:
+        f:phase: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-08-11T05:23:48Z"
+  name: mongodata
+  namespace: keptn
+  resourceVersion: "36627"
+  selfLink: /api/v1/namespaces/keptn/persistentvolumeclaims/mongodata
+  uid: 5dae9d59-55c2-4830-9402-73a38af7476f
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  storageClassName: non-dynamic
