@@ -254,7 +254,7 @@ carts   carts-marc1111-dev.apps.ocp45demo.local          carts      http        
 
 Browse to http://carts-marc1111-dev.apps.ocp45demo.local 
 
-image:images/carts.png[title="carts"]
+image:images/carts1.png[title="carts1"]
 
 https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
 
