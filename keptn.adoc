@@ -119,143 +119,69 @@ keptn configure monitoring dynatrace
 ----
 
 
-image:images/nexus20.png[title="console"]
-
-
-
 ----
-cat ./shipyard.yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-    test_strategy: "functional"
-  - name: "staging"
-    approval_strategy:
-      pass: "automatic"
-      warning: "manual"
-    deployment_strategy: "blue_green_service"
-    test_strategy: "performance"
-  - name: "production"
-    approval_strategy:
-      pass: "manual"
-      warning: "manual"
-    deployment_strategy: "blue_green_service"
-    remediation_strategy: "automated
+Do a first commit to the project's ("https://github.com/<user>/marc1111.gitmarc1111" below) github repo:
+touch README
+git add README
+git commit -m "initial commit"
+git push origin master
 ----
 
-
 ----
-keptn create project marc2 --shipyard=./shipyard.yaml
-----
-
-
-----
-oc logs dynatrace-service-6f7848749-wfgw4 --follow
-
-{"timestamp":"2020-07-26T02:41:07.020914691Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
-{"timestamp":"2020-07-26T02:41:07.021217513Z","logLevel":"INFO","message":"Creating Dashboard for project marc2"}
-{"timestamp":"2020-07-26T02:41:07.296897299Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
-{"timestamp":"2020-07-26T02:41:07.29707368Z","logLevel":"INFO","message":"Dynatrace dashboard created successfully. You can view it here: https://eye15053.live.dynatrace.com/#dashboards"}
-{"timestamp":"2020-07-26T02:41:07.385872921Z","logLevel":"DEBUG","message":"Dynatrace service returned status 200 OK"}
-{"timestamp":"2020-07-26T02:41:07.493885101Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
-{"timestamp":"2020-07-26T02:41:07.604932139Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
-{"timestamp":"2020-07-26T02:41:07.719819202Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
-{"timestamp":"2020-07-26T02:41:07.814504617Z","logLevel":"DEBUG","message":"Dynatrace service returned status 201 Created"}
+git clone --branch release-0.7.0 https://github.com/keptn/examples.git --single-branch
+cd examples/onboarding-carts
 ----
 
-
-
 ----
-keptn create project sockshop111 --shipyard=./shipyard.yaml --git-token=<gitlab token> --git-user=<gitlab user>  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
+keptn create project marc1111 --shipyard ./shipyard.yaml --git-user= --git-token= --git-remote-url=https://github.com/<user>/marc1111.git
 Starting to create project
 Handling connection for 8080
-ID of Keptn context: 133ff368-ba8d-48fc-958d-734583bf2fa2
+ID of Keptn context: xxxx
 Handling connection for 8080
-Project sockshop111 created
-Stage test created
+Project marc1111 created
+Stage dev created
+Stage staging created
+Stage production created
 Shipyard successfully processed
-----
 
-----
-git clone https://github.com/keptn/examples.git
-cd examples/onboarding-carts
-keptn onboard service carts --project=sockshop111 --chart=./carts
+keptn onboard service carts --project=marc1111 --chart=./carts
 Starting to onboard service
 Handling connection for 8080
-ID of Keptn context: 79df125e-dac7-4e5e-ad43-522cf887f80c
+ID of Keptn context: xxxx
 Handling connection for 8080
-Create umbrella Helm Chart for project sockshop111
-Creating new Keptn service carts in stage test
-Finished creating service carts in project sockshop111
-----
-
-----
-https://keptn.sh/docs/0.6.0/usecases/onboard-carts-service/
-----
-
-
-
-----
-
- keptn add-resource --project=sockshop111 --service=carts --stage=test --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
- Adding resource jmeter/basiccheck.jmx to service carts in stage test in project sockshop111
- Handling connection for 8080
- Resource has been uploaded.
-
-
- keptn add-resource --project=sockshop111 --service=carts --stage=test  --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
- Adding resource jmeter/load.jmx to service carts in stage test in project sockshop111
- Handling connection for 8080
- Resource has been uploaded.
-----
-
-----
-keptn onboard service carts --project=sockshop111 --chart=./carts
-Starting to onboard service
-Handling connection for 8080
-ID of Keptn context: 8d832271-ab33-4e49-bc0b-8542c32b0d43
-Handling connection for 8080
-Creating new Keptn service carts in stage test
+Create umbrella Helm Chart for project marc1111
+Creating new Keptn service carts in stage dev
+Creating new Keptn service carts in stage staging
 Service already exists
-----
 
-----
-keptn onboard service carts-db --project=sockshop111  --chart=./carts-db --deployment-strategy=direct
-Starting to onboard service
+keptn add-resource --project=marc1111 --service=carts --stage=dev --resource=jmeter/load.jmx --resourceUri=jmeter/basiccheck.jmx
+Adding resource jmeter/load.jmx to service carts in stage dev in project marc1111
 Handling connection for 8080
-ID of Keptn context: 3878f8c0-b6bb-47a4-b952-59109e8a186c
+Resource has been uploaded.
+
+keptn send event new-artifact --project=marc1111 --service=carts --image=docker.io/keptnexamples/carts --tag=0.11.1
+Starting to send a new-artifact-event to deploy the service carts in project marc1111 in version docker.io/keptnexamples/carts:0.11.1
 Handling connection for 8080
-Creating new Keptn service carts-db in stage test
-Finished creating service carts-db in project sockshop111
+ID of Keptn context: xxxx
+Handling connection for 8080
+Start updating chart carts of stage dev
+Finished updating chart carts of stage dev
+Start upgrading chart marc1111-dev-carts in namespace marc1111-dev
+Finished upgrading chart marc1111-dev-carts in namespace marc1111-dev
+Start upgrading chart marc1111-dev-carts-generated in namespace marc1111-dev
+Finished upgrading chart marc1111-dev-carts-generated in namespace marc1111-dev
 
-
-keptn send event new-artifact --project=sockshop111 --service=carts-db --image=docker.io/mongo --tag=4.2.2
+oc project marc1111-dev
+Now using project "marc1111-dev" on server "https://api.apps.ocp45demo.local:6443".
+[root@dell-r730-001 onboarding-carts]# oc get pods
+NAME READY STATUS RESTARTS AGE
+carts-79fc55d687-vdhbg 1/1 Running 0 3m5s
 ----
 
-----
-oc logs lighthouse-service-6d4b5dcd9-s9h6t -c distributor
-
-Received a message for topic [sh.keptn.internal.event.service.create]: {"contenttype":"application/json","data":{"project":"sockshop111","service":"carts-db","helmChart":"H4sIFAAAAAAA/ykAK2FIUjBjSE02THk5NWIzVjBkUzVpWlM5Nk9WVjZNV2xqYW5keVRRbz1IZWxtAOxXT2/6RhDl7E8x4tQeDDYQkHz7KT20avMrSqX0WA3rCXGz3t3ujmlRynev1mBjHDCHpEkr+V2snf0zM/a8N2uBll2Yrsa3T2h5tMVcDt4bURRF89msfEZR1H5G8XQ2iKeLOI7ni9lkPojiyXwxH0D07pGcQeEY7SB6s692cv8ToMkeyLpMqwQ2cZCSEzYzXI6/wPckcxC+MuBRW3BkN5kgqIomUJhTchxuqpOiUTyKgs/Orcd11PzfoCzI/SsCcJX/s2mL/1MvCT3/PwBZjmtKINdqrQNLRmYCb3WhOIE4OPA9CQDoLyarUC615QQmiyheBACZOmdtqcJnp9ijAzX/mXIjkcmNK1OYkpF6m5N6473gCv8ns3m7/y9uJlHP/49AGIZB6w7wnKk0gaW3OCbFD1oWOd1KzPIgJ8YUGZNXNA9LCfFzgTMk/AIUgpy70yk5PwzhnjD91WZMPytBAYAlpwsr9tN++EdBjg8jAMfaluoUR9FdFjhGLlwCL7ugHTUa48Z16N/VddsRbwAgcUXy4A2NacxVGRwE0Tt9gdHDvkU2VRJ2u8AHapFpvd0fxVtDCdyTsITs03QkSbC2++kcWTz91HDddg5QcfGwoZGDhzzZ+3r3HkfynplEY0bPxYqsIiY3yvR4/3IaWT6TYTWqbnxlmpf2ZsoxKkEJDDsOCF/NHUOE3W7Y4UDo3GhVpuJfxAoddaw2aDnUj+eiMVb/TuKauxwVrikNV9sEfvT7OtbWV96XF/jGGZkxDJNh7bZsr9+Ofovhb0jpEQvJMCxlloew20GN0kVVdh5CK8ZMka2/dNiqYKjDOjTxRrqlpfnVSsOykHKpZSa2Cfzw+FXz0pLzNKlWGW25UVnhMYrTDr/Hkb6ek5V1U8rFnWfHyVG5tyyRnxIY+684btRjh5jUrhgtV8F/kX/i1gVNhxdf06uzAMw5bUsa0Qhv+HrpmM/W7PdEV/8/cPfN/wTX7v/Tm5tW/58vFjd9//8IXOz/v+w/flcHreSqVo2Keg0hqmrIT1R6ZEotObOo+ZNRLWa0a+LlpS3NP5BDMz7ptifN8bNfdo8ePXr8h/BPAAAA///heHaOABgAAA==","deploymentStrategies":{"*":"direct"},"eventContext":{"keptnContext":"3878f8c0-b6bb-47a4-b952-59109e8a186c","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjczNjAwMjF9.RTItxs4nNzc-ZT1z33Cht0mxnUb5oR5Rxze1iL05SJg"}},"id":"edac1ad8-60db-408b-ae74-5c32e7b4778e","shkeptncontext":"3878f8c0-b6bb-47a4-b952-59109e8a186c","source":"https://github.com/keptn/keptn/api","specversion":"0.2","time":"2020-08-01T04:27:01.919032794Z","type":"sh.keptn.internal.event.service.create"}
-Received a message for topic [sh.keptn.event.configuration.change]: {"contenttype":"application/json","data":{"canary":{"action":"set","value":100},"eventContext":{"keptnContext":"a1756959-bf11-40da-9898-63b53b82760a","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjczNjAwODZ9.K3Ta6bV9lgWZExuTLwt53g-znG-bBUgWEy-D6_dsWzs"},"labels":null,"project":"sockshop111","service":"carts-db","stage":"","valuesCanary":{"image":"docker.io/mongo:4.2.2"}},"id":"d8057145-95a6-4191-8849-7e989d7bf050","shkeptncontext":"a1756959-bf11-40da-9898-63b53b82760a","source":"https://github.com/keptn/keptn/cli#configuration-change","specversion":"0.2","time":"2020-08-01T04:28:06.916753285Z","type":"sh.keptn.event.configuration.change"}
-----
 
 ----
 https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
 ----
 
-----
-git clone --branch release-0.6.2 https://github.com/keptn/examples.git --single-branch
-----
 
-----
-keptn create project sockshopgate --shipyard=./shipyard-quality-gates.yaml --git-token=<gitlab token>  --git-user=<gitlab user>  --git-remote-url=https://gitlab.com/marcredhat/dynatrace-pipeline
-Starting to create project
-Handling connection for 8080
-ID of Keptn context: 2f0e7f63-4472-4270-aedf-e1e3b5d79e8e
-Handling connection for 8080
-Project sockshopgate created
-Stage hardening created
-Shipyard successfully processed
-----
-image:images/nexus21.png[title="console"]
 
