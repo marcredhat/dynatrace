@@ -199,8 +199,51 @@ carts-db-mongodata   Pending
 ----
 
 ----
-https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
+See https://github.com/marcredhat/upi/blob/master/nfs/nfs.adoc
+
+oc create -f - <<EOF
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv00022
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+  - ReadWriteOnce
+  nfs:
+    path: /mnt/storage
+    server: 10.1.8.11
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: non-dynamic
+EOF
 ----
+
+----
+oc get pvc carts-db-mongodata -o yaml > carts-db-mongodata-pvc.yaml
+vim carts-db-mongodata-pvc.yaml; add storageClassName: non-dynamic
+oc delete -f carts-db-mongodata-pvc.yaml
+persistentvolumeclaim "carts-db-mongodata" deleted
+oc create -f carts-db-mongodata-pvc.yaml
+persistentvolumeclaim/carts-db-mongodata created
+----
+
+----
+oc get pvc
+NAME                 STATUS   VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+carts-db-mongodata   Bound    pv00022   100Gi      RWO            non-dynamic    4s
+----
+
+
+----
+oc get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+carts-79fc55d687-vdhbg     1/1     Running   0          3h43m
+carts-db-b99744499-zp7zp   1/1     Running   4          7m40s
+----
+
+https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
+
 
 
 
