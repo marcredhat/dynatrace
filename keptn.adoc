@@ -8,6 +8,9 @@ oc project keptn
 curl -sL https://get.keptn.sh | sudo -E bash
 ----
 
+----
+Deploy OpenShift Service Mesh in the istio-system project
+----
 
 ----
 oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:default
@@ -21,7 +24,7 @@ oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:kept
 ----
 
 ----
-keptn install --platform=openshift
+keptn install --use-case=continuous-delivery --platform=openshift  
 keptn creates the folder /root/.keptn/ to store logs and possibly creds.
 Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz
 Installing Keptn ...
@@ -178,6 +181,22 @@ NAME READY STATUS RESTARTS AGE
 carts-79fc55d687-vdhbg 1/1 Running 0 3m5s
 ----
 
+
+----
+keptn onboard service carts-db --project=marc1111 --chart=./carts-db
+keptn send event new-artifact --project=marc1111 --service=carts-db --image=mongo
+----
+
+
+----
+oc get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+carts-79fc55d687-vdhbg     1/1     Running   0          3h39m
+carts-db-b99744499-zp7zp   0/1     Pending   0          3m11s
+[root@dell-r730-001 onboarding-carts]# oc get pvc
+NAME                 STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+carts-db-mongodata   Pending
+----
 
 ----
 https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
