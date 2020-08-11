@@ -242,6 +242,19 @@ carts-79fc55d687-vdhbg     1/1     Running   0          3h43m
 carts-db-b99744499-zp7zp   1/1     Running   4          7m40s
 ----
 
+
+----
+oc expose svc carts
+route.route.openshift.io/carts exposed
+
+oc get route
+NAME    HOST/PORT                                 PATH   SERVICES   PORT   TERMINATION   WILDCARD
+carts   carts-marc1111-dev.apps.ocp45demo.local          carts      http                 None
+----
+
+Browse to http://carts-marc1111-dev.apps.ocp45demo.local 
+
+
 https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
 
 
