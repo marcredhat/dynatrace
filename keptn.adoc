@@ -189,6 +189,10 @@ keptn send event new-artifact --project=marc1111 --service=carts-db --image=mong
 
 
 ----
+oc project marc1111-dev
+----
+
+----
 oc get pods
 NAME                       READY   STATUS    RESTARTS   AGE
 carts-79fc55d687-vdhbg     1/1     Running   0          3h39m
