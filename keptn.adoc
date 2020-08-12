@@ -86,32 +86,40 @@ is still running, then
 Browse to localhost:8080
 ----
 
+----
+oc expose svc api-gateway-nginx
+----
+
+----
+oc get route
+NAME                HOST/PORT                                      PATH   SERVICES            PORT   TERMINATION   WILDCARD
+api-gateway-nginx   api-gateway-nginx-keptn.apps.ocp45demo.local          api-gateway-nginx   http                 None
+bridge              bridge-keptn.apps.ocp45demo.local                     bridge              3000                 None
+dynatrace-service   dynatrace-service-keptn.apps.ocp45demo.local          dynatrace-service   8080                 None
+----
+
+
 
 ----
 DT_TENANT=eye15053.live.dynatrace.com
 DT_API_TOKEN=<Dynatrace API token>
 DT_PAAS_TOKEN=<Dynatrace PaaS token>
-oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://localhost:8080/api" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" 
+oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN" --from-literal="KEPTN_API_URL=http://api-gateway-nginx-keptn.apps.ocp45demo/api" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" 
 ----
 
 
+
 ----
-
-kubectl delete -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
-
-
 oc -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=xxx" \
 --from-literal="DT_TENANT=eyexxx.live.dynatrace.com" \
 --from-literal="KEPTN_API_URL=http://api-gateway-nginx-keptn.apps.ocp45demo.local/api" \
 --from-literal="KEPTN_API_TOKEN=xxx" -oyaml --dry-run | oc replace -f -
 
+
+kubectl delete -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
 ----
 
-
-----
-oc apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.8.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
-----
 
 
 ----
@@ -282,6 +290,10 @@ marc1111-dev
 marc1111-production
 marc1111-staging
 ----
+
+
+image:images/dashboard.png[title="dashboard"]
+
 
 ----
 Deploy slow version:
