@@ -16,5 +16,9 @@ cd examples/onboarding-carts
 ----
 
 ----
-keptn create project qualitygates --shipyard --shipyard=shipyard-quality-gates.yaml --git-user= --git-token= --git-remote-url=https://github.com/<user>/qualitygates.git
+keptn create project marcqualitygates  --shipyard=shipyard-quality-gates.yaml --git-user=<user> --git-token=<token>  --git-remote-url=https://github.com/<user>/qualitygates.git
+----
+
+----
+keptn create service catalogue --project=marcqualitygates
 ----
