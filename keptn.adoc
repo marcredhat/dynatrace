@@ -271,11 +271,26 @@ marc1111-staging
 ----
 
 ----
+Activate quality gate:
+keptn add-resource --project=marc1111 --stage=dev --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+----
+
+
+----
 keptn send event start-evaluation --project=marc1111 --stage=dev --service=catalogue --timeframe=5m
 Starting to send a start-evaluation event to evaluate the service catalogue in project marc1111
 Handling connection for 8080
-ID of Keptn context: xxxx
+ID of Keptn context: 1f226ff9-527f-4173-b21e-9d3bc085b589
 ----
+
+----
+ab -n 10000 -c 100 http://carts-marc1111-dev.apps.ocp45demo.local/
+----
+
+----
+keptn get event evaluation-done --keptn-context=1f226ff9-527f-4173-b21e-9d3bc085b589
+----
+
 
 https://tutorials.keptn.sh/tutorials/keptn-quality-gates-dynatrace/index.html?index=..%2F..index#7
 
