@@ -280,6 +280,73 @@ keptn send event new-artifact --project=marc1111 --service=carts --image=docker.
 image:images/carts2.png[title="carts2"]
 
 
+== Quality gates
+
+----
+oc project keptn
+oc apply -f  https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.4.1/deploy/service.yaml
+----
+
+----
+oc get pods
+NAME                                                              READY   STATUS    RESTARTS   AGE
+api-gateway-nginx-5bc6f54d4b-dr24g                                1/1     Running   0          25h
+api-service-55d4c499fd-7j627                                      1/1     Running   0          25h
+bridge-559f9988c7-wnttg                                           1/1     Running   0          25h
+configuration-service-865d89f78f-qzcg7                            2/2     Running   0          3h1m
+dynatrace-service-775c6b876c-d684r                                1/1     Running   0          12h
+dynatrace-service-distributor-bbf6d494f-q5mgj                     1/1     Running   0          12h
+dynatrace-sli-service-85ddb88f7b-8kvc5                            1/1     Running   0          116s
+dynatrace-sli-service-monitoring-configure-distributor-544gbx46   1/1     Running   0          116s
+eventbroker-go-dcf997974-zlftw                                    1/1     Running   0          25h
+gatekeeper-service-678f556955-l6nwc                               2/2     Running   2          25h
+helm-service-6946fb9b8d-vtgn9                                     2/2     Running   2          25h
+helm-service-continuous-deployment-distributor-567cc995bd-8xflq   1/1     Running   2          25h
+jmeter-service-669848d4f8-kbg9s                                   2/2     Running   1          25h
+keptn-nats-cluster-0                                              3/3     Running   0          25h
+lighthouse-service-5bb8698f9-wc8df                                2/2     Running   2          25h
+mongodb-datastore-cd457f886-vzslv                                 2/2     Running   0          5h1m
+mongodb-f67b9d468-rcfxm                                           1/1     Running   0          157m
+openshift-route-service-7f57d79955-rpzkh                          2/2     Running   2          25h
+remediation-service-5f44c6779c-4tpqh                              2/2     Running   2          25h
+shipyard-service-6c989977d5-q9xgk                                 2/2     Running   2          25h
+----
+
+----
+Edit mongo deployment:
+securityContext:
+       fsGroup: 0
+       runAsUser: 0
+     serviceAccount: keptn-default
+     serviceAccountName: keptn-default
+     terminationGracePeriodSeconds: 30
+     volumes:
+     - name: mongodata
+       persistentVolumeClaim:
+         claimName: mongodata
+----
+
+----
+keptn add-resource --project=marc1111 --stage=dev --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+Adding resource slo-quality-gates.yaml to service carts in stage dev in project marc1111
+Handling connection for 8080
+Resource has been uploaded.
+----
+
+----
+keptn add-resource --project=marc1111 --stage=dev --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+Adding resource sli-config-dynatrace.yaml to service carts in stage dev in project marc1111
+Handling connection for 8080
+Resource has been uploaded.
+----
+
+== Other notes
+
+
+
+
+
+
 ----
 Activate quality gate:
 keptn add-resource --project=marc1111 --stage=dev --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
