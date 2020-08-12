@@ -271,6 +271,16 @@ marc1111-staging
 ----
 
 ----
+Deploy slow version:
+keptn send event new-artifact --project=marc1111 --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.2
+----
+
+
+
+image:images/carts2.png[title="carts2"]
+
+
+----
 Activate quality gate:
 keptn add-resource --project=marc1111 --stage=dev --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
 ----
