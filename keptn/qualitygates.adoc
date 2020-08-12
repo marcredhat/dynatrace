@@ -1,0 +1,20 @@
+
+----
+Create a new repo and make a first commit:
+git clone https://github.com/marcredhat/qualitygates.git
+cd qualitygates
+
+touch README
+git add README
+git commit -m "initial commit"
+git push origin master
+----
+
+----
+git clone --branch release-0.7.0 https://github.com/keptn/examples.git --single-branch
+cd examples/onboarding-carts
+----
+
+----
+keptn create project qualitygates --shipyard --shipyard=shipyard-quality-gates.yaml --git-user= --git-token= --git-remote-url=https://github.com/<user>/qualitygates.git
+----
