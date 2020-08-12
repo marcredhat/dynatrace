@@ -95,9 +95,22 @@ oc -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT
 ----
 
 
+----
+
+kubectl delete -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.8.0/deploy/service.yaml
+
+
+oc -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=xxx" \
+--from-literal="DT_TENANT=eyexxx.live.dynatrace.com" \
+--from-literal="KEPTN_API_URL=http://api-gateway-nginx-keptn.apps.ocp45demo.local/api" \
+--from-literal="KEPTN_API_TOKEN=xxx" -oyaml --dry-run | oc replace -f -
 
 ----
-oc apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
+
+
+----
+oc apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.8.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
 ----
 
 
