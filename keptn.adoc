@@ -24,7 +24,6 @@ NOTE: Keptn requires OpenShift Service Mesh for doing a blue/green deployment.
       Two CRDs are required: DestinationRule and VirtualService
       
 NOTE: With OpenShift Service Mesh, you can have multiple control planes each managing multiple namespaces.
-      
       However, Keptn expects Service Mesh to be deployed in istio-system.
       
       So, we'll deploy OpenShift Service Mesh in the istio-system project.
