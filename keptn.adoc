@@ -5,7 +5,8 @@
 ----
 For instructions on 
 deploying OpenShift 4.4+ and the Dynatrace OneAgent Operator and
-connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page (using ActiveGate),
+connecting your OpenShift clusters to Dynatrace to take advantage of the dedicated OpenShift overview page 
+(using ActiveGate),
 please see:
 ----
 labs 1 and 2 at https://github.com/marcredhat/dynatrace/
