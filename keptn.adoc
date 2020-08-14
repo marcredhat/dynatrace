@@ -37,16 +37,7 @@ curl -sL https://get.keptn.sh | sudo -E bash
 ----
 
 
-----
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:default
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn-configuration-service
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:builder                       
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-default                       
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:deployer                      
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-api-service            
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-helm-service            
-oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:keptn-lighthouse-service
-----
+
 
 ----
 keptn install --use-case=continuous-delivery --platform=openshift  
