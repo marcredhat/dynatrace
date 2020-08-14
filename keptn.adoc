@@ -10,6 +10,22 @@ please see:
 ----
 labs 1 and 2 at https://github.com/marcredhat/dynatrace/
 
+
+----
+For instructions on deploying OpenShift Service Mesh,
+please see:
+----
+
+NOTE: Keptn requires OpenShift Service Mesh for doing a blue/green deployment.  
+      Two CRDs are required: DestinationRule and VirtualService
+      
+NOTE: With OpenShift Service Mesh, you can have multiple control planes each managing multiple namespaces.
+      However, Keptn expects Service Mesh to be deployed in istio-system
+      So, we'll deploy OpenShift Service Mesh in the istio-system project.
+
+See https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc
+
+
 ----
 mkdir keptn
 oc new-project keptn
@@ -17,12 +33,6 @@ oc project keptn
 curl -sL https://get.keptn.sh | sudo -E bash
 ----
 
-
-See https://github.com/marcredhat/dynatrace/blob/master/servicemesh.adoc
-
-----
-Deploy OpenShift Service Mesh in the istio-system project
-----
 
 ----
 oc adm policy add-cluster-role-to-user cluster-admin  system:serviceaccount:keptn:default
