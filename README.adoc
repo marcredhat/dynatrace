@@ -106,6 +106,10 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
  
  21. Dynatrace real user monitoring on OpenShift 4.4+; Dynatrace Visually complete and Speed index
      Drupal 9.0.3 with AMP module and PostgreSQL 12.3 backend on OpenShift 4.4
+     
+ 22. Keptn is an event-based control plane for continuous delivery and automated operations for cloud-native applications.
+     Use Keptn to deploy to OpenShift 4.5 with Service Mesh.
+     Monitor and automate operations using Dynatrace.
 ----
 
 
@@ -681,6 +685,13 @@ Video: https://www.youtube.com/watch?v=1Lq7Kqji-5w
        Drupal 9.0.3 with AMP module and PostgreSQL 12.3 backend on OpenShift 4.4
        
 See https://github.com/marcredhat/dynatrace/tree/master/drupal
+
+
+==  22. Keptn is an event-based control plane for continuous delivery and automated operations for cloud-native applications.
+        Use Keptn to deploy to OpenShift 4.5 with Service Mesh.
+        Monitor and automate operations using Dynatrace.
+        
+See https://www.youtube.com/watch?v=ji03EjFx6CA
 
 
 ----
