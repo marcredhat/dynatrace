@@ -2,6 +2,9 @@
 
 == Keptn - event-based control plane for continuous delivery and automated operations for cloud-native applications
 
+
+See https://www.youtube.com/watch?v=ji03EjFx6CA
+
 ----
 For instructions on 
 deploying OpenShift 4.4+ and the Dynatrace OneAgent Operator and
