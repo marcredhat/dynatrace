@@ -4,6 +4,8 @@ on OpenShift 4.4+
 
 # Automate the onboarding of applications into Dynatrace using Ansible Tower
 
+# Continuous delivery and automated operations with Keptn
+
 # Speed up your CI/CD pipelines and identify quality issues early 
 
 ##  Dynatrace on OpenShift 4 Workshop
@@ -110,6 +112,8 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
  22. Keptn is an event-based control plane for continuous delivery and automated operations for cloud-native applications.
      Use Keptn to deploy to OpenShift 4.5 with Service Mesh.
      Monitor and automate operations using Dynatrace.
+     
+ 23. Deploy a 3-tier Node.js app on OpenShift 4.4+. Monitor with Dynatrace.
 ----
 
 
@@ -692,6 +696,11 @@ See https://github.com/marcredhat/dynatrace/tree/master/drupal
         Monitor and automate operations using Dynatrace.
         
 See https://www.youtube.com/watch?v=ji03EjFx6CA
+
+
+==  23. Deploy a 3-tier Node.js app on OpenShift 4.4+. Monitor with Dynatrace.
+
+See https://www.youtube.com/watch?v=2daosAWwBwI
 
 
 ----
