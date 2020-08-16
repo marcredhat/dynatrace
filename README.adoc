@@ -114,6 +114,8 @@ Youtube playlist (step-by-step for each lab): https://www.youtube.com/playlist?l
      Monitor and automate operations using Dynatrace.
      
  23. Deploy a 3-tier Node.js app on OpenShift 4.4+. Monitor with Dynatrace.
+ 
+ 24. Deploying a React App with an Express Backend on OpenShift 4.4+. Monitor with Dynatrace.
 ----
 
 
@@ -702,6 +704,12 @@ See https://www.youtube.com/watch?v=ji03EjFx6CA
 
 See https://www.youtube.com/watch?v=2daosAWwBwI
 
+
+==  24. Deploying a React App with an Express Backend on OpenShift 4.4+. Monitor with Dynatrace.
+
+See https://www.youtube.com/watch?v=yTq0NCdASCU
+
+All credit for the React app goes to Jan Kleinert.
 
 ----
 Links:
