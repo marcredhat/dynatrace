@@ -1,5 +1,5 @@
 
-# Using Dynatrace to monitor Java Enterprise Edition and Quarkus apps, Kafka, Istio Service Mesh etc
+# Using Dynatrace to monitor Java Enterprise Edition, Quarkus and Node.js apps, Kafka, Istio Service Mesh etc
 on OpenShift 4.4+
 
 # Automate the onboarding of applications into Dynatrace using Ansible Tower
