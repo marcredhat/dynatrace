@@ -1,0 +1,1 @@
+sudo ssh -X root@dell  -L 443:console-openshift-console.apps.ocp45demo.local:443  -L 80:nexus-cicd-marc.apps.ocp45demo.local:80 -L 80:ansible-tower-web-svc-tower371.apps.ocp45demo.local:80 -L 8080:localhost:8080 -L 4444:localhost:443 -L 9000:127.0.0.1:9000 -L 80:bridge-keptn.apps.ocp45demo.local:80 -L 6443:api.ocp45demo.local:6443
