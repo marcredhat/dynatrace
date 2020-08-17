@@ -11,6 +11,12 @@ on OpenShift 4.4+
 ##  Dynatrace on OpenShift 4 Workshop
 
 
+
+image:images/workshops_map.png[title="Map of Dynatrace / OpenShift 4 workshops"]
+
+
+
+
 The workshop will cover the following topics:
 
 - Facilitate end-to-end tracing of transactions using Dynatrace OneAgent SDK.
