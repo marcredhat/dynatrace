@@ -11,7 +11,7 @@ on OpenShift 4.4+
 
 
 
-image:images/workshops_map_v2.png[title="Map of Dynatrace / OpenShift 4 workshops"]
+image:images/workshops_map_v3.png[title="Map of Dynatrace / OpenShift 4 workshops"]
 
 
 ##  Dynatrace on OpenShift 4 Workshop
