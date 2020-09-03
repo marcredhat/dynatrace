@@ -506,6 +506,8 @@ See https://www.youtube.com/watch?v=ji03EjFx6CA
 
 See https://www.youtube.com/watch?v=2daosAWwBwI
 
+Based on https://developers.redhat.com/articles/deploy-a-NodeJS-app-OpenShift
+
 
 ==  24. Deploying a React App with an Express Backend on OpenShift 4.4+. Monitor with Dynatrace.
 
